@@ -1,0 +1,15 @@
+@Library("my-shared-library") _
+
+pipeline {
+    node 
+
+    environment {
+        git_url = 
+        git_branch = 
+    }
+    stages{
+        stage("Build stage "){
+
+        }
+    }
+}
