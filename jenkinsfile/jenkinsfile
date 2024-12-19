@@ -1,7 +1,7 @@
 @Library("my-shared-library")_
 
 pipeline {
-    node 
+    agent any 
 
     environment {
         git_url = 'https://github.com/thanikai-devops/Devops_ansible.git'
