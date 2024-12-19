@@ -4,10 +4,9 @@ pipelineJob("Base Pipeline env structure") {
     definition {
         cpsScm {
             scm {
-                git(
-                    url: 'https://github.com/thanikai-devops/Devops_ansible.git',
-                    branch: 'dev-jenkins'
-                )
+                git('https://github.com/thanikai-devops/Devops_ansible.git'){
+                    branch ('dev-jenkins')
+                }
             }
             scriptPath('jenkinsfile/jenkinsfile')  // Make sure this path is correct
         }
