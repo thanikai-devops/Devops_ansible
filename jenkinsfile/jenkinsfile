@@ -18,7 +18,7 @@ pipeline {
         stage("Build"){
             steps{
                 script{
-                    deploy(UAT)
+                    deploy('UAT')
                 }
             }
         }
