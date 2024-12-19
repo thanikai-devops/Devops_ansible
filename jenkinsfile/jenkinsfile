@@ -11,10 +11,6 @@ pipeline {
         stage("Build stage "){
             steps{
                 script{
-                    sh '''
-                        git config --global user.name "thanikai-devops"
-                        git config --global user.email "thanikaichandran.cj@sciflare.com"
-                    '''
                     deploy(dev)
                 }
             }
