@@ -1,7 +1,3 @@
-def call(String environment = 'dev') {
-    if (environment == 'dev') {
-        echo "Deploy in dev stage"
-    } else if (environment == 'UAT') {
-        echo "Deploy in UAT stage"
-    }
+def call(String environment) {
+    echo "Deploying to ${environment} environment."
 }
