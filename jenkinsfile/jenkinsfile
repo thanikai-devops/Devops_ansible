@@ -11,10 +11,6 @@ pipeline {
         stage("Build stage "){
             steps{
                 script{
-                     // Set Git user identity locally for this build
-                    sh 'git config --global user.name "Your Jenkins User"'
-                    sh 'git config --global user.email "your-email@example.com"'
-                    // Now call the deploy function
                     deploy(dev)
                 }
             }
