@@ -8,10 +8,17 @@ pipeline {
         git_branch = 'dev-jenkins'
     }
     stages{
-        stage("Build stage "){
+        stage("Checkout"){
             steps{
                 script{
-                    deploy(dev)
+                    git url: git_url , branch: git_branch
+                }
+            }
+        }
+        stage("Build"){
+            steps{
+                script{
+                    deploy(UAT)
                 }
             }
         }
