@@ -1,4 +1,4 @@
-pipelineJob("Base Pipeline env structure") {
+pipelineJob("Automation_UAT") {
     description("This Job runs the base pipeline structure from a Git repo")
 
     definition {
