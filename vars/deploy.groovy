@@ -1,4 +1,4 @@
-def call(String environment = "prod") {
+def call(String environment ) {
     script {
        if (environment == "dev"){
         echo "Deploying to Development (dev) environment."
