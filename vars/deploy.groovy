@@ -1,7 +1,10 @@
-def call(String name = "Thanikai This is from Vars/deploy.groovy file returns") {
+def call(String environment = "dev") {
     script {
-        sh """
-            echo Hi ${name}
-        """
+       if (environment == "dev"){
+        echo "Deploying to Development (dev) environment."
+       }
+       else (environment == "UAT"){
+        echo "Deploying to Development (UAT) environment."
+       }
     }
 }
