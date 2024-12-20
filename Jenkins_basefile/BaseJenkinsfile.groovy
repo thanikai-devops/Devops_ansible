@@ -8,7 +8,7 @@ pipelineJob("Automation_UAT") {
                     branch ('dev-jenkins')
                 }
             }
-            scriptPath('jenkinsfile/jenkinsfile')  // Make sure this path is correct
+            scriptPath('pipelines/jenkinsfile')  // Make sure this path is correct
         }
     }
 }
