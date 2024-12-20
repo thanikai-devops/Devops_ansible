@@ -18,6 +18,7 @@ pipeline {
         stage("Hello World") {
             steps{
                 script{
+                    echo "environment of devops working well and good"
                     deploy()
                 }
             }
