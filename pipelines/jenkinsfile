@@ -16,8 +16,10 @@ pipeline {
             }
         }
         stage("Hello World") {
-            script {
-                deploy()
+            steps{
+                script{
+                    deploy()
+                }
             }
         }
     }
