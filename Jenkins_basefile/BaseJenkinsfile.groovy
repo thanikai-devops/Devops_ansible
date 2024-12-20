@@ -1,5 +1,5 @@
 pipelineJob("Automation_UAT") {
-    description("This Job runs the base pipeline structure from a Git repo")
+    description("This Job runs the base pipeline structure from a Git repo and it created and ref by seedJobs jenkins freestyle JObs")
 
     definition {
         cpsScm {
