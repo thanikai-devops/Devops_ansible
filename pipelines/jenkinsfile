@@ -22,12 +22,12 @@ pipeline {
                 }
             }
         }
-        stage("Docker"){
-            steps{
-                script{
-                    docker()
-                }
-            }
-        }
+        // stage("Docker"){
+        //     steps{
+        //         script{
+        //             docker()
+        //         }
+        //     }
+        // }
     }
 }
