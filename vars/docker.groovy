@@ -1,4 +1,4 @@
 def call(String dockerImages){
-    sh "docker images "
-    sh "docker --version"
+    echo "Docker images check "
+    // sh "docker --version"
 }
