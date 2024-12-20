@@ -3,10 +3,10 @@ def call(String environment = "prod") {
        if (environment == "dev"){
         echo "Deploying to Development (dev) environment."
        }
-       else (environment == "UAT"){
+       else if (environment == "UAT"){
         echo "Deploying to Development (UAT) environment."
        }
-       else (environment == "Prod"){
+       else if (environment == "Prod"){
         echo "Deploying to prod environment"
        }
     }
