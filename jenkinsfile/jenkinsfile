@@ -17,9 +17,7 @@ pipeline {
         }
         stage("Hello World") {
             script {
-                sh """
-                    echo Hi Alice
-                """
+                deploy()
             }
         }
     }
