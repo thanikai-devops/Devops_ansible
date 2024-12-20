@@ -15,11 +15,11 @@ pipeline {
                 }
             }
         }
-        stage("Build"){
-            steps{
-                script{
-                    deploy('PROD')
-                }
+        stage("Hello World") {
+            script {
+                sh """
+                    echo Hi Alice
+                """
             }
         }
     }
