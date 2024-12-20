@@ -19,7 +19,7 @@ pipeline {
             steps{
                 script{
                     echo "environment of devops working well and good"
-                    deploy()
+                    deploy("UAT")
                 }
             }
         }
