@@ -1,4 +1,4 @@
-def call(string){
-    sh "docker ps -a "
+def call(String dockerImages){
+    sh "docker images "
     sh "docker --version"
 }
