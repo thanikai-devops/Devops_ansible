@@ -4,8 +4,8 @@ pipeline {
     agent any 
 
     environment {
-        git_url = 'https://github.com/thanikai-devops/Devops_ansible.git'
-        git_branch = 'feature-jenkins'
+        git_url = 'https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git'
+        git_branch = 'seran_dev'
     }
     stages{
         stage("Checkout"){
