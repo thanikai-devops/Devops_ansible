@@ -5,7 +5,7 @@ pipelineJob("GooplusBuildDeploy"){
     definition{
         cpsScm{
             scm{
-                git ("url"){
+                git ("https://github.com/thanikai-devops/Devops_ansible.git"){
                     branch ('feature-jenkins')
                 }
 
