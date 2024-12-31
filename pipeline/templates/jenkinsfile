@@ -4,20 +4,28 @@ pipeline {
     agent any 
 
     environment {
-        
+        git_url = 'https://github.com/thanikai-devops/Devops_ansible.git'
+        git_branch = 'feature-jenkins'
     }
     stages{
-        stage(){
+        stage("Checkout"){
             steps{
                 script{
-
+                    git url: git_url , branch: git_branch
                 }
             }
         }
-        stage(){
+        stage("Build"){
             steps{
                 script{
-                    
+                    echo "Build Success"
+                }
+            }
+        }
+        stage("Deploy"){
+            steps{
+                script{
+                    echo "Tested Success"
                 }
             }
         }
