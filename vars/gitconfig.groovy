@@ -4,13 +4,13 @@ def call(String project) {
     def config
     if (project == 'gooplus-backend') {
         config = [
-            git_credentialsId: credentialsId("BitbucketRepo"),
+            git_credentialsId: credentials("BitbucketRepo"),
             git_branch: "seran_dev",
             git_url: 'https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git'
         ]
     } else if (project == "astro-website") {
         config = [
-            git_credentialsId: credentialsId("BitbucketRepo"),
+            git_credentialsId: credentials("BitbucketRepo"),
             git_branch: "dev_dafin",
             git_url: 'https://SciflareIT@bitbucket.org/web-sciflare/sciflare-website.git'
         ]
