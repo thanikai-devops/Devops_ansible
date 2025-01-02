@@ -3,15 +3,14 @@
 pipeline {
     agent any 
 
-    environment {
-        git_url = 'https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git'
-        git_branch = 'seran_dev'
+    parameters {
+        string(name:"project",defaultValue: "gooplus",description:"Project From Gooplus-Backend[Api,Cron]" )
     }
     stages{
         stage("Checkout"){
             steps{
                 script{
-                    git url: git_url , branch: git_branch
+                    checkout(project)
                 }
             }
         }
