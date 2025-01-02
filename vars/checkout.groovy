@@ -6,7 +6,7 @@ def call(String project) {
         error "No valid Git configuration found for project: ${project}"
     }
     echo "Checking out repository: ${config.git_url} on branch ${config.git_branch}"
-    git credentialsId: config.git_credentialsId, url: config.git_url, branch: config.git_branch    
+    git credentials: config.git_credentials, url: config.git_url, branch: config.git_branch    
     echo "Checkout Successful"
 }
 

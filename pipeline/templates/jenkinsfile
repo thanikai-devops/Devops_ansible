@@ -14,10 +14,10 @@ pipeline {
                     echo "Git URL: ${config.git_url}"
                     echo "Git Branch: ${config.git_branch}"
                     checkout([
-                        $class: 'GitSCM',
-                        branches: [[name: "*/${config.git_branch}"]],
-                        userRemoteConfigs: [[url: "${config.git_url}",credentialsId:"${config.git_credentialsId}"]]
-                    ])
+                            $class: 'GitSCM',
+                            branches: [[name: "*/${config.git_branch}"]],
+                            userRemoteConfigs: [[url: config.git_url, credentialsId: config.git_credentials]]
+                        ])
                 }
             }
         }
