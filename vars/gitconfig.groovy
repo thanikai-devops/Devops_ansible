@@ -2,7 +2,7 @@ def call(String project) {
     // Declaration Approach (Better for Scaling)
     // Declaration approach, you would have a variable (config) that is populated with the relevant values based on the project name
     def config
-    if (project == 'gooplus') {
+    if (project == 'gooplus-backend') {
         config = [
             git_credentialsId: credentialsId("BitbucketRepo"),
             git_branch: "seran_dev",

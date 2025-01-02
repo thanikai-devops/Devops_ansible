@@ -4,7 +4,7 @@ pipeline {
     agent any 
 
     parameters {
-        string(name:"project",defaultValue: "gooplus",description:"Project From Gooplus-Backend[Api,Cron]" )
+        string(name:"project",defaultValue: "gooplus-backend",description:"Project From Gooplus-Backend[Api,Cron]" )
     }
     stages{
         stage("Checkout"){
