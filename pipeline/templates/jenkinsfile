@@ -3,6 +3,10 @@
 pipeline {
     agent any 
 
+    environment{
+        GITHUB_CREDS = credentails("BitbucketRepo")
+    }
+
     parameters {
         string(name:"project",defaultValue: "gooplus-backend",description:"Project From Gooplus-Backend[Api,Cron]" )
     }
@@ -10,15 +14,7 @@ pipeline {
         stage("Checkout"){
             steps{
                 script{
-                    def config = gitconfig(params.project)
-                    echo "Git URL: ${config.git_url}"
-                    echo "Git Branch: ${config.git_branch}"
-                    
-                    checkout([
-                            $class: 'GitSCM',
-                            branches: [[name: "*/${config.git_branch}"]],
-                            userRemoteConfigs: [[url: config.git_url, credentialsId: config.git_credentialsId]]
-                        ])
+                    checkout(params.project,GITHUB_CREDS)
                 }
             }
         }
