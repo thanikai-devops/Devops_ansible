@@ -1,27 +1,12 @@
-@Library("my_shared_library") _
-
-pipeline {
+@Library ("my_shared_library") _ 
+pipeline{
     agent any 
 
     stages{
-        stage("Checkout"){
+        stage("Checkout-Code"){
             steps{
                 script{
-                    checkoutRepo()
-                }
-            }
-        }
-        // stage("Build"){
-        //     steps{
-        //         script{
-        //             build()
-        //         }
-        //     }
-        // }
-        stage("Deploy"){
-            steps{
-                script{
-                    echo "Tested Success"
+                    checkoutgoo()
                 }
             }
         }
