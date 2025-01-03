@@ -4,8 +4,7 @@ def call(String project) {
     def config
     if (project == 'gooplus-backend') {
         config = [
-            git_credentialsId = "FSPAPI"
-            // git_credentialsId: "BitbucketRepo",
+            GITHUB_CREDS = credentials("BitbucketRepo")
             git_branch: "seran_dev",
             git_url: 'https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git'
         ]
