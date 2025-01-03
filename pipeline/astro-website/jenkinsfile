@@ -1,0 +1,14 @@
+@Library ("my_shared_library") _ 
+pipeline{
+    agent any 
+
+    stages{
+        stage("Checkout-Code"){
+            steps{
+                script{
+                    checkoutRepo()
+                }
+            }
+        }
+    }
+}

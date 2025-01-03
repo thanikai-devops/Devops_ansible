@@ -3,15 +3,11 @@
 pipeline {
     agent any 
 
-    // environment{
-    //     GITHUB_CREDS = credentials("BitbucketRepo")
-    // }
-
     stages{
         stage("Checkout"){
             steps{
                 script{
-                    checkoutRepo('seran_dev','https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git')
+                    checkoutRepo()
                 }
             }
         }
