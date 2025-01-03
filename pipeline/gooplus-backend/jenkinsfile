@@ -12,3 +12,32 @@ pipeline{
         }
     }
 }
+
+// @Library('my_shared_library') _  // Import your shared library
+
+// pipeline {
+//     agent any
+
+//     parameters {
+//         string(name: 'BRANCH', defaultValue: 'dev_dafin', description: 'Branch to checkout')
+//         string(name: 'REPO_URL', defaultValue: 'https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git', description: 'Repository URL')
+//         string(name: 'CREDENTIALS_ID', defaultValue: 'BitbucketRepo', description: 'Credentials ID for the repository')
+//     }
+
+//     stages {
+//         stage('Checkout') {
+//             steps {
+//                 script {
+//                     // Use parameters passed to Jenkins to customize checkout
+//                     checkoutRepo(
+//                         branch: params.BRANCH,  // Use the value of the 'BRANCH' parameter
+//                         repoUrl: params.REPO_URL,  // Use the value of the 'REPO_URL' parameter
+//                         credentialsId: params.CREDENTIALS_ID  // Use the value of the 'CREDENTIALS_ID' parameter
+//                     )
+//                 }
+//             }
+//         }
+
+//         // Other stages...
+//     }
+// }
