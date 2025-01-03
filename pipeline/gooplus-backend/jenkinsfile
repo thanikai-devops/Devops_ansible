@@ -2,18 +2,11 @@
 pipeline{
     agent any 
 
-    parameters {
-        string(name:"Branch",defaultValue:"seran_dev",description:"Checkout the branch")
-        string(name:"Repo",defaultValue:"https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git",description:"Checkout the url")
-    }
-
     stages{
         stage("Checkout-Code"){
             steps{
                 script{
-                    checkoutRepo(
-                        branch:params.Branch,
-                        repoUrl:params.Repo)
+                    checkoutGoo()
                 }
             }
         }
