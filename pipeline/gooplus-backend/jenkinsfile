@@ -11,7 +11,7 @@ pipeline{
         stage("Checkout-Code"){
             steps{
                 script{
-                    checkoutgoo(
+                    checkoutRepo(
                         branch:params.Branch,
                         repoUrl:params.Repo)
                 }
