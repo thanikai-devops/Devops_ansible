@@ -13,10 +13,11 @@ pipeline {
                     def config = gitconfig(params.project)
                     echo "Git URL: ${config.git_url}"
                     echo "Git Branch: ${config.git_branch}"
+                    
                     checkout([
                             $class: 'GitSCM',
                             branches: [[name: "*/${config.git_branch}"]],
-                            userRemoteConfigs: [[url: config.git_url, credentialsId: config.git_credentials]]
+                            userRemoteConfigs: [[url: config.git_url, credentialsId: config.git_credentialsId]]
                         ])
                 }
             }

@@ -11,11 +11,3 @@ def call(String project) {
 }
 
 
-// For Single Project Approach
-// def call(String gitUrl , String gitbranch , String credentialsId){
-//     echo "Using Bitbucket Credentials for gooplus repository for Backend"
-//     echo "Checking Out repository: ${gitUrl} on branch ${gitbranch}"
-
-//     // git_credentialsId: credentialsId , url: giturl , branch: gitbranch
-//     echo "Checkout Successful"
-// }
