@@ -7,14 +7,11 @@ pipeline {
         GITHUB_CREDS = credentails("BitbucketRepo")
     }
 
-    parameters {
-        string(name:"project",defaultValue: "gooplus-backend",description:"Project From Gooplus-Backend[Api,Cron]" )
-    }
     stages{
         stage("Checkout"){
             steps{
                 script{
-                    checkout(params.project,GITHUB_CREDS)
+                    checkout()
                 }
             }
         }

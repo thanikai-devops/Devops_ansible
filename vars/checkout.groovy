@@ -1,6 +1,11 @@
-def call(String project) {
+def call() {
     // Fetch the Git configuration based on the project
-    def config = gitconfig(project)
-    url: config.git_url
-    branch: config.git_branch
+    checkout([
+        $class: "GitSCM",
+        branches: [[name: "*/seran-dev"]],
+        userRemoteConfigs: [[
+            url: 'https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git',
+            credentialsId: credentials("BitbucketRepo")
+        ]]
+    ])
 }
