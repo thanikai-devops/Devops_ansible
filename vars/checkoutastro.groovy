@@ -1,4 +1,4 @@
-def call(String branch= "dev_dafin",String repourl='https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git'
+def call(String branch= "dev_dafin",String repourl='https://SciflareIT@bitbucket.org/web-sciflare/sciflare-website.git'
 ,String credentialsId = 'BitbucketRepo') {
     // Fetch the Git configuration based on the project
     checkout([

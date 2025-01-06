@@ -2,11 +2,21 @@
 pipeline{
     agent any 
 
+    tools {
+        nodejs "nvm" 
+    }
     stages{
         stage("Checkout-Code"){
             steps{
                 script{
                     checkoutGoo()
+                }
+            }
+        }
+        stage("Build Node"){
+            steps{
+                script{
+                    build()
                 }
             }
         }
