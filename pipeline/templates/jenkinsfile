@@ -3,7 +3,7 @@ pipeline{
     agent any
 
     environment {
-        REPO_URL = "https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git"
+        GIT_URL = "https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git"
         GIT_BRANCH = "seran_dev"
         IMAGE_NAME = 'alpine'
         IMAGE_TAG = 'latest'
@@ -14,6 +14,7 @@ pipeline{
         stage("Checkout-Code"){
             steps{
                 script{
+                    load gitcheckout
                     gitcheckout(gitbranch: env.GIT_BRANCH , repourl: env.REPO_URL)
                 }
             }
