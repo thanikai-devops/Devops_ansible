@@ -8,6 +8,6 @@ def call(String gitbranch, String repourl, String credentialsId = "BitbucketRepo
             credentialsId: credentialsId
         ]]
     ]
-    checkout(scmConfig)
+    checkout scm: scmConfig
 }
 
