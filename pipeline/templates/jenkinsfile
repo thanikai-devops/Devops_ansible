@@ -2,10 +2,6 @@
 pipeline{
     agent any
 
-    tools {
-        docker "docker-kra"
-    }
-
     environment {
         GIT_URL = "https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git"
         GIT_BRANCH = "seran_dev"
@@ -22,13 +18,13 @@ pipeline{
                 }
             }
         }
-        stage("Build Node"){
-            steps{
-                script{
-                    build()
-                }
-            }
-        }
+        // stage("Build Node"){
+        //     steps{
+        //         script{
+        //             build()
+        //         }
+        //     }
+        // }
     }
 }
 
