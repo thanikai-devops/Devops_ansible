@@ -19,13 +19,13 @@ pipeline{
                 }
             }
         }
-        stage("Build Node"){
-            steps{
-                script{
-                    build()
-                }
-            }
-        }
+        // stage("Build Node"){
+        //     steps{
+        //         script{
+        //             build()
+        //         }
+        //     }
+        // }
     }
 }
 
