@@ -9,7 +9,6 @@ pipelineJob("GooplusBuildDeploy"){
                     branch ("feature-jenkins")
                 }
 
-
             }
             scriptPath('pipeline/templates/jenkinsfile')
         }
