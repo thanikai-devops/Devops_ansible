@@ -1,6 +1,8 @@
 @Library ("my_shared_library") _ 
 pipeline{
-    agent any 
+    agent {
+        label "gooplus"
+    } 
 
     tools {
         nodejs "nvm" 
@@ -10,7 +12,7 @@ pipeline{
         stage("Checkout-Code"){
             steps{
                 script{
-                    checkoutGoo()
+                    checkout()
                 }
             }
         }

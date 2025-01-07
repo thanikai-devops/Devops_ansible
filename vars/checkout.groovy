@@ -1,5 +1,4 @@
-def call(String branch= "dev_dafin",String repourl='https://SciflareIT@bitbucket.org/web-sciflare/sciflare-website.git'
-,String credentialsId = 'BitbucketRepo') {
+def call(String gitbranch, String repourl, String credentialsId = "BitbucketRepo" ) {
     // Fetch the Git configuration based on the project
     checkout([
         $class: "GitSCM",
