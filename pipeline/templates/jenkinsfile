@@ -14,8 +14,7 @@ pipeline{
         stage("Checkout-Code"){
             steps{
                 script{
-                    // checkoutCode(gitbranch: env.GIT_BRANCH , repourl: env.GIT_URL)
-                    call("seran_dev","https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git")
+                    checkoutCode(gitbranch: env.GIT_BRANCH , repourl: env.GIT_URL)
                 }
             }
         }
