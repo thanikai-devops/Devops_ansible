@@ -1,13 +1,13 @@
 @Library ("my_shared_library") _ 
 pipeline{
-    agent {
-        label "gooplus"
-    } 
-    
-    tools {
-        nodejs "nvm" 
-        
+    agent any
+
+    environment {
+        IMAGE_NAME = 'alpine'
+        IMAGE_TAG = 'latest'
+        // DOCKERFILE_PATH
     }
+    
     stages{
         stage("Checkout-Code"){
             steps{
