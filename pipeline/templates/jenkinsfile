@@ -9,12 +9,17 @@ pipeline{
         IMAGE_TAG = 'latest'
         // DOCKERFILE_PATH
     }
+    parameters {
+        string(name: 'REPO_URL', defaultValue: 'https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git', description: 'Repository URL')
+        string(name: 'BRANCH', defaultValue: 'seran_dev', description: 'Branch to checkout')
+    }
 
     stages{
         stage("Checkout-Code"){
             steps{
                 script{
-                    checkoutCode(gitbranch: env.GIT_BRANCH , repourl: env.GIT_URL)
+                    def checkoutCode = load checkoutCode
+                    checkoutCode.call(params.REPO_URL,params.BRANCH)
                 }
             }
         }
