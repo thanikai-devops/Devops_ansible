@@ -14,7 +14,7 @@ pipeline{
         stage("Checkout-Code"){
             steps{
                 script{
-                    gitcheckout.call(gitbranch: env.GIT_BRANCH , repourl: env.GIT_URL)
+                    checkoutCode(gitbranch: env.GIT_BRANCH , repourl: env.GIT_URL)
                 }
             }
         }
