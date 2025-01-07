@@ -2,20 +2,23 @@
 pipeline{
     agent any
 
-    // environment {
-    //     // GIT_URL = "https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git"
-    //     // GIT_BRANCH = "seran_dev"
-    //     IMAGE_NAME = 'alpine'
-    //     IMAGE_TAG = 'latest'
-    //     // DOCKERFILE_PATH
-    // }
-    
+    tools {
+        docker "docker-kra"
+    }
+
+    environment {
+        GIT_URL = "https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git"
+        GIT_BRANCH = "seran_dev"
+        IMAGE_NAME = 'alpine'
+        IMAGE_TAG = 'latest'
+        // DOCKERFILE_PATH
+    }
+
     stages{
         stage("Checkout-Code"){
             steps{
                 script{
-                    gitcheckout()
-                    // checkout(gitbranch: GIT_BRANCH , repourl: GIT_URL)
+                    gitcheckout(gitbranch: GIT_BRANCH , repourl: GIT_URL)
                 }
             }
         }
