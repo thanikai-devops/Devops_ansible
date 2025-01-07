@@ -3,7 +3,7 @@ pipeline{
     agent {
         label "gooplus"
     } 
-
+    
     tools {
         nodejs "nvm" 
         
