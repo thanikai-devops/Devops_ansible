@@ -20,7 +20,7 @@ pipeline{
         stage("Build Node"){
             steps{
                 script{
-                    build(IMAGE_NAME,IMAGE_TAG,DOCKERFILE_PATH)
+                    build()
                 }
             }
         }
