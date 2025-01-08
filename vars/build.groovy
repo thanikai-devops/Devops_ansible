@@ -4,7 +4,7 @@ def call(String imageName='sample',String imageTag='latest',String dockerfilepat
     // Step 1: Check Docker version
     echo "Checking Docker version..."
     sh "docker --version"
-    docker.build(imageName,dockerfilePath)
+    
     // Step 2: Build Docker image
     echo "Pulling Docker image ${imageName}:${imageTag}..."
     // sh """
@@ -14,4 +14,7 @@ def call(String imageName='sample',String imageTag='latest',String dockerfilepat
     //     docker run --rm ${imageName}:${imageTag}
     // """
     // echo "Building Docker image ${imageName}:${imageTag} from Dockerfile at ${dockerfilePath}..."
+    script{
+        docker.build(imageName,dockerfilePath)
+    }
 }
