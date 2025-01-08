@@ -18,7 +18,11 @@ pipeline{
         stage("Checkout-Code"){
             steps{
                 script{
-                    checkoutCode()
+                    def checkoutScript = load 'checkout.groovy'
+
+                    // Call the checkout function dynamically
+                    checkoutScript.checkoutFromRepo(params.PROJECT_URL, params.BRANCH_NAME, params.CREDENTIALS_ID)
+                    // checkoutCode()
                 }
             }
         }
