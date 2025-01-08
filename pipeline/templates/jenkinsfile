@@ -22,7 +22,7 @@ pipeline{
         stage("Build Node"){
             steps{
                 script{
-                    build(appName: 'my-node-app', appDir: "${APP_DIR}")
+                    dockerbuild(appName: 'my-node-app', appDir: "${APP_DIR}")
                 }
             }
         }
