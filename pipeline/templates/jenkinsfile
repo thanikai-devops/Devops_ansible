@@ -9,7 +9,11 @@ pipeline{
         IMAGE_TAG = 'latest'
         // DOCKERFILE_PATH
     }
-
+    parameters {
+        string(name: 'PROJECT_URL', defaultValue: 'https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git', description: 'Git repository URL')
+        string(name: 'BRANCH_NAME', defaultValue: 'seran_dev', description: 'Branch name for the Git repository')
+        string(name: 'CREDENTIALS_ID', defaultValue: 'BitbucketRepo', description: 'Credentials ID for Git repository')
+    }
     stages{
         stage("Checkout-Code"){
             steps{
