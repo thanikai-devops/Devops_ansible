@@ -7,7 +7,7 @@ def call(String imageName='sample',String imageTag='latest',String dockerfilepat
     // Step 2: Build Docker image
     echo "Pulling Docker image ${imageName}:${imageTag}..."
     sh """
-        docker build -t  ${imageName}:${imageTag} ${dockerfilepath}
+        docker build -t  ${imageName}:${imageTag} .
     """ 
     sh """
         docker run --rm ${imageName}:${imageTag}
