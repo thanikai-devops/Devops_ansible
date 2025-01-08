@@ -1,8 +1,8 @@
 // vars/build.groovy
 // Environment variables
-# Explanation of why we have used this function in step 4
+// # Explanation of why we have used this function in step 4
 def build(String tag,String file_name) {
-# def scriptcontents = libraryResource "Dockerfile" so this function takes our Dockerfile from "resources" dir and uses it in a pipeline where this shared library is called.
+//  def scriptcontents = libraryResource "Dockerfile" so this function takes our Dockerfile from "resources" dir and uses it in a pipeline where this shared library is called.
     def scriptcontents = libraryResource "Dockerfile"
     writeFile file:"Dockerfile", text: scriptcontents
 
