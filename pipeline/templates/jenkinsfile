@@ -17,13 +17,13 @@ pipeline{
                 }
             }
         }
-        stage("Build Node"){
-            steps{
-                script{
-                    build(IMAGE_NAME,IMAGE_TAG)
-                }
-            }
-        }
+        // stage("Build Node"){
+        //     steps{
+        //         script{
+        //             build(IMAGE_NAME,IMAGE_TAG)
+        //         }
+        //     }
+        // }
     }
 }
 
