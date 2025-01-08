@@ -11,7 +11,7 @@ def call(String imageName='sample',String imageTag='latest',String dockerfilepat
     //     docker build -t  ${imageName}:${imageTag} ${dockerfilepath}
     // """ 
     sh """
-        docker build . -f /resources/gooplus/Dockerfile
+        docker build -t ${imageName}:${imageTag} . 
     """
     // sh """
     //     docker run --rm ${imageName}:${imageTag}
