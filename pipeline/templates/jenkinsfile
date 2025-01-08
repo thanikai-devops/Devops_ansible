@@ -14,7 +14,6 @@ pipeline{
         stage("Checkout-Code"){
             steps{
                 script{
-                    def checkoutCode = load "vars/checkoutCode.groovy"
                     checkoutCode()
                 }
             }
