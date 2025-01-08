@@ -6,7 +6,7 @@ def call(String repourl="https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus
     echo "Checking out from repo: ${repourl}, branch: ${gitbranch} with credentials: ${credentialsId}"
     checkout([
         $class: "GitSCM",
-        branches: [[name: "*/${gitbranch}"]],
+        branches: [[name: "*/${branch}"]],
         userRemoteConfigs: [[
             url: repourl,
             credentialsId: credentialsId
