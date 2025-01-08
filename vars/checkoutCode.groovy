@@ -1,4 +1,4 @@
-def call(String repoUrl="https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git",String branch= "seran_dev",String credentialsId="BitbucketRepo") {
+def call(String repourl="https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git",String branch= "seran_dev",String credentialsId="BitbucketRepo") {
     // Fetch the Git configuration based on the project
     // def gitbranch = env.GIT_BRANCH ?: ""
     // def repourl = env.REPO_URL ?: ""
