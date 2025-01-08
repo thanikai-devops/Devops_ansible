@@ -1,4 +1,4 @@
-def call(String repourl,String branch,String credentialsId) {
+def call(String repourl="",String branch="",String credentialsId="BitbucketRepo") {
     // Fetch the Git configuration based on the project
     // def gitbranch = env.GIT_BRANCH ?: ""
     // def repourl = env.REPO_URL ?: ""
