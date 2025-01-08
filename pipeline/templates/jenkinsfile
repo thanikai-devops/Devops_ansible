@@ -7,7 +7,7 @@ pipeline{
         GIT_BRANCH = "seran_dev"
         IMAGE_NAME = 'hello-world'
         IMAGE_TAG = 'latest'
-        // DOCKERFILE_PATH
+        DOCKERFILE_PATH = "resources/gooplus/Dockerfile"
     }
     stages{
         stage("Checkout-Code"){
@@ -17,13 +17,13 @@ pipeline{
                 }
             }
         }
-        // stage("Build Node"){
-        //     steps{
-        //         script{
-        //             build(IMAGE_NAME,IMAGE_TAG)
-        //         }
-        //     }
-        // }
+        stage("Build Node"){
+            steps{
+                script{
+                    build(IMAGE_NAME,IMAGE_TAG,DOCKERFILE_PATH)
+                }
+            }
+        }
     }
 }
 
