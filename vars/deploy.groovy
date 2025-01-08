@@ -1,9 +1,4 @@
-def call(){
-    stage("Start runing the process"){
-        steps{
-            script{
-                
-            }
-        }
-    }
+def call(String ansibleadcommand , String ansiblescriptpath){
+    // Application deploy into server using ansible
+    
 }
