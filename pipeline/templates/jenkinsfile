@@ -20,7 +20,7 @@ pipeline{
         stage("Build Node"){
             steps{
                 script{
-                    build()
+                    build(appName: 'my-node-app', appDir: "${APP_DIR}")
                 }
             }
         }
