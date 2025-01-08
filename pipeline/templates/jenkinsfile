@@ -9,6 +9,7 @@ pipeline{
         IMAGE_TAG = 'latest'
         DOCKERFILE_PATH = "Dockerfile"
         APP_DIR = "${WORKSPACE}"
+        appName = "my-node-app"
     }
     stages{
         stage("Checkout-Code"){

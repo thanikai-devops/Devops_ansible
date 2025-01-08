@@ -15,7 +15,7 @@
 //     """
 //     // echo "Building Docker image ${imageName}:${imageTag} from Dockerfile at ${dockerfilePath}..."
 // }
-def call(String appName = 'my-node-app', String appDir = '/path/to/app/on/server') {
+def call(String appName , String appDir ) {
     script {
         // Step 1: Prepare the build context directory for Docker
         def buildContext = "./docker-context-${appName}"
