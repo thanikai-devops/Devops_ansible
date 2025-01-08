@@ -2,7 +2,6 @@
 // Environment variables
 def call(String imageName='sample',String imageTag='latest',String dockerfilepath="Dockerfile") {
     // Step 1: Check Docker version
-    load = Libraryresource()
     echo "Checking Docker version..."
     sh "docker --version"
     // Step 2: Build Docker image
