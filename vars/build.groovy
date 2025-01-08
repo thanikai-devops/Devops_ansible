@@ -1,11 +1,6 @@
 // vars/build.groovy
 // Environment variables
-def call() {
-    // Fetch environment variables
-    def imageName = System.getenv("IMAGE_NAME") ?: "hello-world" // Default value if not set
-    def imageTag = System.getenv("IMAGE_TAG") ?: "latest"              // Default value if not set
-    // def dockerfilePath = System.getenv("DOCKERFILE_PATH") ?: "./Dockerfile" // Default value if not set
-
+def call(String imageName,String imageTag) {
     // Step 1: Check Docker version
     echo "Checking Docker version..."
     sh "docker --version"
