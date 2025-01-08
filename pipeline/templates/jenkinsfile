@@ -5,7 +5,7 @@ pipeline{
     environment {
         GIT_URL = "https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git"
         GIT_BRANCH = "seran_dev"
-        IMAGE_NAME = 'Sample'
+        IMAGE_NAME = 'sample'
         IMAGE_TAG = 'latest'
         DOCKERFILE_PATH = "./resources/gooplus/Dockerfile"
     }
