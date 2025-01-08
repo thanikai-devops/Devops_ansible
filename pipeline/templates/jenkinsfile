@@ -8,8 +8,6 @@ pipeline{
         IMAGE_NAME = 'sample'
         IMAGE_TAG = 'latest'
         DOCKERFILE_PATH = "Dockerfile"
-        APP_DIR = "${WORKSPACE}"
-        appName = "my-node-app"
     }
     stages{
         stage("Checkout-Code"){
@@ -22,7 +20,7 @@ pipeline{
         stage("Build Node"){
             steps{
                 script{
-                    dockerbuild(appName: 'my-node-app', appDir: "${APP_DIR}")
+                    dockerbuild(IMAGE_NAME,IMAGE_TAG)
                 }
             }
         }

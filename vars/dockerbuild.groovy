@@ -1,30 +1,21 @@
 // vars/build.groovy
 // Environment variables
-// # Explanation of why we have used this function in step 4
-def build(String tag,String file_name) {
-//  def scriptcontents = libraryResource "Dockerfile" so this function takes our Dockerfile from "resources" dir and uses it in a pipeline where this shared library is called.
-    def scriptcontents = libraryResource "Dockerfile"
-    writeFile file:"Dockerfile", text: scriptcontents
-
+def call(String imageName,String imageTag,String dockerfilepath) {
+    // Step 1: Check Docker version
+    echo "Checking Docker version..."
+    sh "docker --version"
+    // Step 2: Build Docker image
+    echo "Pulling Docker image ${imageName}:${imageTag}..."
     sh """
-        docker build --build-arg file_name="${file_name}" -t "${tag}"  .
-    """
+        docker build -t  ${imageName}/${imageTag} .
+    """ 
 }
 
-// def call(String imageName='sample',String imageTag='latest',String dockerfilepath="./resources") {
-//     // Step 1: Check Docker version
-//     echo "Checking Docker version..."
-//     sh "docker --version"
-//     // Step 2: Build Docker image
-//     echo "Pulling Docker image ${imageName}:${imageTag}..."
-//     sh """
-//         docker build -t  ${imageName}:${imageTag} .
-//     """ 
-//     sh """
-//         docker run --rm ${imageName}:${imageTag}
-//     """
-    // echo "Building Docker image ${imageName}:${imageTag} from Dockerfile at ${dockerfilePath}..."
-// }
+
+
+
+
+
 // def call(String appName , String appDir ) {
 //     script {
 //         // Step 1: Prepare the build context directory for Docker
