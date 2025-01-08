@@ -3,7 +3,7 @@ def call(String repourl="https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus
     // def gitbranch = env.GIT_BRANCH ?: ""
     // def repourl = env.REPO_URL ?: ""
     // def credentialsId = env.credentialsId ?: "BitbucketRepo"
-    echo "Checking out from repo: ${repourl}, branch: ${gitbranch} with credentials: ${credentialsId}"
+    echo "Checking out from repo: ${repourl}, branch: ${branch} with credentials: ${credentialsId}"
     checkout([
         $class: "GitSCM",
         branches: [[name: "*/${branch}"]],
