@@ -1,8 +1,5 @@
 def call(String repourl="",String branch="",String credentialsId="BitbucketRepo") {
-    // Fetch the Git configuration based on the project
-    // def gitbranch = env.GIT_BRANCH ?: ""
-    // def repourl = env.REPO_URL ?: ""
-    // def credentialsId = env.credentialsId ?: "BitbucketRepo"
+    // Dynamic Checkout Branch 
     echo "Checking out from repo: ${repourl}, branch: ${branch} with credentials: ${credentialsId}"
     checkout([
         $class: "GitSCM",

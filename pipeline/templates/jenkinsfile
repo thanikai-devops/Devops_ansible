@@ -13,17 +13,17 @@ pipeline{
         stage("Checkout-Code"){
             steps{
                 script{
-                    checkoutCode("https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git","seran_dev")
+                    checkoutCode(GIT_URL,GIT_BRANCH)
                 }
             }
         }
-        // stage("Build Node"){
-        //     steps{
-        //         script{
-        //             build()
-        //         }
-        //     }
-        // }
+        stage("Build Node"){
+            steps{
+                script{
+                    build()
+                }
+            }
+        }
     }
 }
 
