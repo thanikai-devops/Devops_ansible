@@ -1,4 +1,4 @@
-def call(String ansibleadcommand , String ansiblescriptpath){
+def call(String ansibleadcommand){
     // Application deploy into server using ansible
     
 }
