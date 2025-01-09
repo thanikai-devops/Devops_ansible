@@ -5,9 +5,9 @@ pipeline{
     environment {
         GIT_URL = "https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git"
         GIT_BRANCH = "seran_dev"
-        IMAGE_NAME = 'hello-world'
+        IMAGE_NAME = 'node'
         IMAGE_TAG = 'latest'
-        DOCKERFILE_PATH = "Dockerfile"
+        DOCKERFILE_PATH = "."
     }
     stages{
         stage("Checkout-Code"){
@@ -20,7 +20,7 @@ pipeline{
         stage("Build Node"){
             steps{
                 script{
-                    dockerbuild(IMAGE_NAME,IMAGE_TAG)
+                    dockerbuild(IMAGE_NAME,IMAGE_TAG,DOCKERFILE_PATH)
                 }
             }
         }
