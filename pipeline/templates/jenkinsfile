@@ -13,17 +13,17 @@ pipeline{
         stage("Checkout-Code"){
             steps{
                 script{
-                    checkoutCode(GIT_URL,GIT_BRANCH)
+                    checkoutCode.gitcheckout(GIT_URL,GIT_BRANCH)
                 }
             }
         }
-        stage("Build Node"){
-            steps{
-                script{
-                    dockerbuild(IMAGE_NAME,IMAGE_TAG,DOCKERFILE_PATH)
-                }
-            }
-        }
+        // stage("Build Node"){
+        //     steps{
+        //         script{
+        //             dockerbuild(IMAGE_NAME,IMAGE_TAG,DOCKERFILE_PATH)
+        //         }
+        //     }
+        // }
     }
 }
 
