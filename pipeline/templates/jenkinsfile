@@ -8,6 +8,7 @@ pipeline{
         IMAGE_NAME = 'node'
         IMAGE_TAG = 'latest'
         DOCKERFILE_PATH = "api/Dockerfile"
+        ECR_REPO_NAME = "gooplusdocker"
     }
     stages{
         stage("Checkout-Code"){
@@ -17,13 +18,20 @@ pipeline{
                 }
             }
         }
-        // stage("Build Node"){
-        //     steps{
-        //         script{
-        //             dockerbuild(IMAGE_NAME,IMAGE_TAG,DOCKERFILE_PATH)
-        //         }
-        //     }
-        // }
+        stage("Build Docker Image"){
+            steps{
+                script{
+                    dockerbuild.buildimage(IMAGE_NAME,IMAGE_TAG,DOCKERFILE_PATH)
+                }
+            }
+        }
+        stage("Push Docker Image into Aws Ecr Repo"){
+            steps{
+                script{
+                    
+                }
+            }
+        }
     }
 }
 

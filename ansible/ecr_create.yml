@@ -1,0 +1,15 @@
+--- 
+
+# Creating Aws ecr Repo for an Store Docker images based Upon Projects
+- name: Creating aws ecr repository in aws 
+  hosts: 
+  become: yes
+  vars:
+    ecr_repo_name: "{{ecr_repo_name}}" 
+    regions: ap-south-1
+  tasks:
+    - name: Create aws ecr repository 
+      amazon.aws.ecr: 
+        name: "{{ecr_repo_name}}"
+        region: "{{regions}}"
+        state: present
