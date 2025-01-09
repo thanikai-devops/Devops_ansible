@@ -1,4 +1,4 @@
-def checkoutgit(String repourl,String branch,String credentialsId="BitbucketRepo") {
+def checkoutCode(String repourl,String branch,String credentialsId="BitbucketRepo") {
     // Dynamic Checkout Branch 
     echo "Checking out from repo: ${repourl}, branch: ${branch} with credentials: ${credentialsId}"
     checkout([
