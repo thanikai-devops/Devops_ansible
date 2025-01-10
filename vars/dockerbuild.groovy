@@ -12,9 +12,9 @@ def buildimage(String imageName,String imageTag,String dockerfilepath, String do
     """ 
     // Creating Aws Ecr repo using ansible files
     echo "Creating Aws ecr repo for ${aws_repoName}"
-    
+
     sh """
-        ansible-playbook  -i inventory.ini ecr_create.yml --extra-vars "ecr_repo_name=${aws_repoName}"
+        ansible-playbook  -i inventory.ini ansible/ecr_create.yml --extra-vars "ecr_repo_name=${aws_repoName}"
     """
 }
 
