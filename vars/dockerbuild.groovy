@@ -5,8 +5,8 @@ String ansiblepath) {
     // Step 1: Check Docker version
     echo "Checking Docker version..."
     sh "docker --version"
-    def ansiblePlaybookPath = "${libraryResource 'ansible/ecr_create.yml'}"
-    def inventoryPath = "${libraryResource 'ansible/inventory.ini'}"
+    def ansiblePlaybookPath = "/ansible/ecr_create.yml"
+    def inventoryPath = "/ansible/inventory.ini"
     def tag = env.BUILD_ID
     // Step 2: Build Docker image
     echo "Pulling Docker image ${imageName}:${imageTag}..."
