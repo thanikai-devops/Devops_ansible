@@ -13,10 +13,10 @@ String ansiblepath) {
         docker build -t  ${imageName}:${imageTag} -f ${dockerfilepath} .
     """ 
     // Creating Aws Ecr repo using ansible files
-    echo "Creating Aws ecr repo for ${aws_repoName}"
-    sh """
-        ansible-playbook  -i playbook/inventory.ini  playbook/ecr_create.yml 
-    """
+    // echo "Creating Aws ecr repo for ${aws_repoName}"
+    // sh """
+    //     ansible-playbook  -i playbook/inventory.ini  playbook/ecr_create.yml 
+    // """
     // --extra-vars "ecr_repo_name=${aws_repoName}"
 }
 
