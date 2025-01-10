@@ -26,13 +26,15 @@ pipeline{
                 }
             }
         }
-        // stage("Push Docker Image into Aws Ecr Repo"){
-        //     steps{
-        //         script{
-
-        //         }
-        //     }
-        // }
+        stage("Push Docker Image into Aws Ecr Repo"){
+            steps{
+                script{
+                    sh """
+                        ansible-playbook  -i playbook/inventory.ini  playbook/ecr_create.yml 
+                    """
+                }
+            }
+        }
     }
 }
 

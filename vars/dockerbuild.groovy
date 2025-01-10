@@ -6,9 +6,6 @@ String ansiblepath) {
     echo "Checking Docker version..."
     sh "docker --version"
     
-    def ansiblePlaybookPath = "/ansible/ecr_create.yml"
-    echo "showing ${ansiblePlaybookPath}"
-    def inventoryPath = "/ansible/inventory.ini"
     def tag = env.BUILD_ID
     // Step 2: Build Docker image
     echo "Pulling Docker image ${imageName}:${imageTag}..."
@@ -18,7 +15,7 @@ String ansiblepath) {
     // Creating Aws Ecr repo using ansible files
     echo "Creating Aws ecr repo for ${aws_repoName}"
     sh """
-        ansible-playbook  -i /playbook/inventory.ini  /playbook/ecr_create.yml 
+        ansible-playbook  -i playbook/inventory.ini  playbook/ecr_create.yml 
     """
     // --extra-vars "ecr_repo_name=${aws_repoName}"
 }
