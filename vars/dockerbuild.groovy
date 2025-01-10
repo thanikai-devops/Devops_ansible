@@ -1,6 +1,7 @@
 // vars/build.groovy
 // Environment variables
-def buildimage(String imageName,String imageTag,String dockerfilepath, String dockerimagename="gooplusapi",String aws_repoName) {
+def buildimage(String imageName,String imageTag,String dockerfilepath, String dockerimagename="gooplusapi",String aws_repoName,
+String ansiblepath="ansible/ec2_create.yml") {
     // Step 1: Check Docker version
     echo "Checking Docker version..."
     sh "docker --version"
@@ -14,7 +15,7 @@ def buildimage(String imageName,String imageTag,String dockerfilepath, String do
     echo "Creating Aws ecr repo for ${aws_repoName}"
 
     sh """
-        ansible-playbook  -i inventory.ini ansible/ecr_create.yml --extra-vars "ecr_repo_name=${aws_repoName}"
+        ansible-playbook  -i inventory.ini ${anisblepath} --extra-vars "ecr_repo_name=${aws_repoName}"
     """
 }
 
