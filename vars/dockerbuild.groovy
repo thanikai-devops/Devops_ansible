@@ -15,7 +15,7 @@ String ansiblepath="ansible/ec2_create.yml") {
     echo "Creating Aws ecr repo for ${aws_repoName}"
 
     sh """
-        ansible-playbook  -i /ansible/inventory.ini /ansible/ecr_create.yml --extra-vars "ecr_repo_name=${aws_repoName}"
+        ansible-playbook  -i ansible/inventory.ini ansible/ecr_create.yml --extra-vars "ecr_repo_name=${aws_repoName}"
     """
 }
 
