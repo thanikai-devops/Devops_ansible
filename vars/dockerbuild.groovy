@@ -6,7 +6,8 @@ String ansiblepath) {
     echo "Checking Docker version..."
     sh "docker --version"
     sh 'ls -al $(pwd)/vars/ansible/'
-    def ansiblePlaybookPath = "./ansible/ecr_create.yml"
+    def ansiblePlaybookPath = "/ansible"
+    echo "showing ${ansiblePlaybookPath}"
     def inventoryPath = "./ansible/inventory.ini"
     def tag = env.BUILD_ID
     // Step 2: Build Docker image
