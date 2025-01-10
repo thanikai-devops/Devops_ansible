@@ -5,6 +5,7 @@ String ansiblepath) {
     // Step 1: Check Docker version
     echo "Checking Docker version..."
     sh "docker --version"
+    sh 'ls -al $(pwd)/vars/ansible/'
     def ansiblePlaybookPath = "./ansible/ecr_create.yml"
     def inventoryPath = "./ansible/inventory.ini"
     def tag = env.BUILD_ID
