@@ -18,7 +18,7 @@ String ansiblepath) {
     // Creating Aws Ecr repo using ansible files
     echo "Creating Aws ecr repo for ${aws_repoName}"
     sh """
-        ansible-playbook  -i /ansible/inventory.ini  /ansible/ecr_create.yml 
+        ansible-playbook  -i /playbook/inventory.ini  /playbook/ecr_create.yml 
     """
     // --extra-vars "ecr_repo_name=${aws_repoName}"
 }
