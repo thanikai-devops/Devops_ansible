@@ -29,9 +29,7 @@ pipeline{
         stage("Push Docker Image into Aws Ecr Repo"){
             steps{
                 script{
-                    sh """
-                        ansible-playbook  -i playbook/inventory.ini  playbook/ecr_create.yml 
-                    """
+                    ansiblePlaybook credentialsId: 'privatekeydevops', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'playbook/inventory.ini', playbook: 'playbook/ecr_create.yml', vaultTmpPath: ''
                 }
             }
         }
