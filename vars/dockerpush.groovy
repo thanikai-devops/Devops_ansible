@@ -1,5 +1,6 @@
 def dockerpush(String imageName ,String imageTag ,String dockerimagename="gooplusapi"){
-    // docker tagged and push into aws ecr repo 
+    // docker tagged and push into aws ecr repo
+    // aws login into the aws ECR
     def tag = env.BUILD_ID
     // Tagging the docker Images 
     sh """
