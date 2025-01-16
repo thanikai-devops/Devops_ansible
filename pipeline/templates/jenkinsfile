@@ -1,6 +1,8 @@
 @Library ("my_shared_library") _ 
 pipeline{
-    agent any
+    agent {
+        label "node-1"
+    }
 
     environment {
         GIT_URL = "https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git"
