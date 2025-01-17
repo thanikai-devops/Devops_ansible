@@ -1,7 +1,7 @@
 // vars/build.groovy
 // Environment variables
-def buildimage(String imageName,String imageTag,String dockerfilepath, String dockerimagename="gooplusapi",String aws_repoName,
-String ecr_repo_name) {
+def buildimage(String imageName,String imageTag,String dockerfilepath,
+ String dockerimagename="gooplusapi") {
     // Step 1: Check Docker version
     echo "Checking Docker version..."
     sh "docker --version"
