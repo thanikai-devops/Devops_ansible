@@ -36,14 +36,10 @@ pipeline{
                 }
             }
         }
-        stage("Ansible Server Remote Connection"){
+        stage("Ansible CheckOut"){
             steps{
                 script{
-                    sshagent (credentials: ["AnsibleServer"]){
-                        sh """
-                            ansible --version                        
-                        """
-                    }
+                   checkoutCode.ansiblecheckout()
                 }
             }
         }
