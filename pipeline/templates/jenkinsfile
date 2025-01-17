@@ -7,10 +7,10 @@ pipeline{
     environment {
         GIT_URL = "https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git"
         GIT_BRANCH = "seran_dev"
-        IMAGE_NAME = 'node'
+        IMAGE_NAME = 'gooplus'
         IMAGE_TAG = 'latest'
         DOCKERFILE_PATH = "api/Dockerfile"
-        ECR_REPO_NAME = "gooplusdocker"
+        REPO_NAME = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/gooplus:latest"
         ANSIBLE_PATH = "ansible/ecr_create.yml"
     }
     stages{
@@ -28,16 +28,13 @@ pipeline{
                 }
             }
         }
-        // stage("Push Docker Image into Aws Ecr Repo"){
-        //     steps{
-        //         script{
-        //             ansiblePlaybook(
-        //                 playbook: '/playbook/ecr_create.yml',
-        //                 inventory: '/playbook/inventory.ini'
-        //             )
-        //         }
-        //     }
-        // }
+        stage("Push Docker Image into Aws Ecr Repo"){
+            steps{
+                script{
+                    dockerpush.dockerpush(IMAGE_NAME,IMAGE_TAG,REPO_NAME)
+                }
+            }
+        }
     }
 }
 
