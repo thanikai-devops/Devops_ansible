@@ -8,7 +8,7 @@ String dockerimagename="829173323501.dkr.ecr.ap-south-1.amazonaws.com/gooplus:la
     def tag = env.BUILD_ID
     // Tagging the docker Images 
     sh """
-        docker tag ${dockerimagename}
+        docker tag ${imageName} ${dockerimagename}
     """
     //  Pushing Docker images 
     echo "docker images ${dockerimagename}"
