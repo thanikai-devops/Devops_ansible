@@ -39,7 +39,8 @@ pipeline{
         stage("Ansible CheckOut"){
             steps{
                 script{
-                   checkoutCode.ansiblecheckout()
+                    agent{label "AnsibleDeployment"}
+                    checkoutCode.ansiblecheckout()
                 }
             }
         }
