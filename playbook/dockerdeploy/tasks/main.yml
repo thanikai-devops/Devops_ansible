@@ -1,4 +1,14 @@
 ---
 # tasks file for dockerbuild
-- name: "Docker pull Image From Aws Ecr"
-  
+- name: Authencation Docker to aws Ecr
+  shell: |
+    aws ecr get-login-password --region {{ aws_region }} | docker login --username AWS --password-stdin {{ ecr_registry_url }}
+  register: login_output
+  no_log: true
+
+- name: Pull Docker Image for ECR
+  docker_image:
+    name: "{{ ecr_registry_url }}"
+    source: pull
+    force: yes
+  register: result

@@ -11,7 +11,7 @@ pipeline{
         IMAGE_TAG = 'latest'
         DOCKERFILE_PATH = "api/Dockerfile"
         REPO_NAME = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/gooplus:latest"
-        ANSIBLE_PATH = "ansible/ecr_create.yml"
+
     }
     stages{
         stage("Checkout-Code"){
@@ -35,6 +35,7 @@ pipeline{
                 }
             }
         }
+        stage("Ansible ")
     }
 }
 

@@ -1,4 +1,4 @@
-def deploydocker(String aws_repoName){
+def deploydocker(String ansible ){
     // Application deploy into server using ansible
      
 }
