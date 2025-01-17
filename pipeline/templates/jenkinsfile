@@ -24,7 +24,7 @@ pipeline{
         stage("Build Docker Image"){
             steps{
                 script{
-                    dockerbuild.buildimage(IMAGE_NAME,IMAGE_TAG,DOCKERFILE_PATH,ECR_REPO_NAME,ANSIBLE_PATH)
+                    dockerbuild.buildimage(IMAGE_NAME,IMAGE_TAG,DOCKERFILE_PATH)
                 }
             }
         }
