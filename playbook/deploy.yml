@@ -4,4 +4,4 @@
   hosts: app
   become: yes
   roles:
-    - dockerdeploy
+    - role/dockerdeploy
