@@ -35,7 +35,7 @@ pipeline{
             steps{
                 script{
                     dockerpush.dockerpush(API_IMAGE_NAME,IMAGE_TAG,REPO_NAME_API)
-                    dockerpush.dockerpush(CRON_IMAGE_NAME,IMAGE_TAG,REPO_NAME_CRON)
+                    // dockerpush.dockerpush(CRON_IMAGE_NAME,IMAGE_TAG,REPO_NAME_CRON)
                 }
             }
         }
