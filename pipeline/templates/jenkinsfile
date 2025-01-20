@@ -7,12 +7,13 @@ pipeline{
     environment {
         GIT_URL = "https://SciflareIT@bitbucket.org/dpl11-backend/goo-plus.git"
         GIT_BRANCH = "seran_dev"
-        IMAGE_NAME = 'gooplus'
+        API_IMAGE_NAME = 'apigoo'
+        CRON_IMAGE_NAME = 'crongoo'
         IMAGE_TAG = 'latest'
-        DOCKERFILE_PATH = "api/Dockerfile"
-        REPO_NAME = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/gooplus:latest"
-        // Ansible Environment Varibale to setup servers
-        ANSIBLE_SECRET = credentials("AnsibleServer")
+        API_DOCKERPATH = "api/Dockerfile"
+        CRON_DOCKERPATH = "cron/Dockerfile"
+        REPO_NAME_API = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/apigoo:latest"
+        REPO_NAME_CRON = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/crongoo:latest"
     }
     stages{
         stage("Checkout-Code"){
@@ -25,14 +26,16 @@ pipeline{
         stage("Build Docker Image"){
             steps{
                 script{
-                    dockerbuild.buildimage(IMAGE_NAME,IMAGE_TAG,DOCKERFILE_PATH)
+                    dockerbuild.buildimage(IMAGE_NAME,IMAGE_TAG,API_DOCKERPATH)
+                    dockerbuild.buildimage(IMAGE_NAME,IMAGE_TAG,CRON_DOCKERPATH)
                 }
             }
         }
         stage("Push Docker Image into Aws Ecr Repo"){
             steps{
                 script{
-                    dockerpush.dockerpush(IMAGE_NAME,IMAGE_TAG,REPO_NAME)
+                    dockerpush.dockerpush(API_IMAGE_NAME,IMAGE_TAG,REPO_NAME_API)
+                    dockerpush.dockerpush(CRON_IMAGE_NAME,IMAGE_TAG,REPO_NAME_CRON)
                 }
             }
         }
