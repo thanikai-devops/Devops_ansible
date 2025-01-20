@@ -28,7 +28,7 @@
     - name: Container API Run from docker Images
       shell: |
         docker run -d \
-          --name {{ container_name_api }} -p 4000:4000 \
+          --name {{ container_name_api }} -p 3000:3000 \
           {{ ecr_registry_url }}/{{ docker_image_api }}
       
     - name: Container Cron Run from docker Images

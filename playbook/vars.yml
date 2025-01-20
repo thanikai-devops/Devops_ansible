@@ -1,0 +1,8 @@
+
+# GooPlus Project Vars 
+aws_region: ap-south-1
+ecr_registry_url: 829173323501.dkr.ecr.ap-south-1.amazonaws.com
+docker_image_api: apigoo
+docker_image_cron: crongoo
+container_name_api: api
+container_name_cron: cron
