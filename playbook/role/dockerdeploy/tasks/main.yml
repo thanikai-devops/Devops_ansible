@@ -2,4 +2,4 @@
 # tasks file for dockerbuild
 - name: Authencation Docker to aws Ecr
   shell: |
-    aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 829173323501.dkr.ecr.ap-south-1.amazonaws.com
+    aws ecr get-login-password --region {{ aws_region }} | docker login --username AWS --password-stdin {{ ecr_registry_url }}
