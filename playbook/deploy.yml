@@ -1,7 +1,7 @@
 ---
 
 - name: Deploy Docker containers into application server
-  hosts: app
+  hosts: 52.66.153.153
   become: yes
   vars: 
     aws_region: ap-south-1
