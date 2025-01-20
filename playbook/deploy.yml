@@ -7,6 +7,9 @@
     aws_region: ap-south-1
     ecr_registry_url: 829173323501.dkr.ecr.ap-south-1.amazonaws.com
   tasks:
+    - name: Check Docker version
+      shell: docker --version
+      register: docker_version
     - name: Login into ECR
       shell: |
         aws ecr get-login-password --region {{ aws_region }} | docker login --username AWS --password-stdin {{ ecr_registry_url }}
