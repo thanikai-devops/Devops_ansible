@@ -1,0 +1,35 @@
+---
+
+- name: Deploy Docker containers into application server
+  hosts: app
+  gather_facts: yes
+  vars_files: 
+    - vars.yml 
+  tasks:
+    - name: Login into ECR
+      shell: |
+        aws ecr get-login-password --region {{ aws_region }} | docker login --username AWS --password-stdin {{ ecr_registry_url }}
+      register: ecr_login
+
+    - name: Pull Docker Images for API
+      shell: |
+        docker pull {{ ecr_registry_url }}/{{ docker_image_api }}
+      register: docker-pull_api
+    - name: Pull Docker Images for cron
+      shell: |
+        docker pull {{ecr_registry_url}}/{{ docker_image_cron }}
+      register: docker_pull_cron
+
+    - name: Container API Run from docker Images
+      shell: |
+        docker run -d \
+          --name {{ container_name_api }} -p 4000:4000 \
+          {{ ecr_registry_url }}/{{ docker_image_api }}
+      register: docker_run_api
+    - name: Container Cron Run from docker Images
+      shell: |
+        docker run -d \
+          --name {{ container_name_cron }} -p 4000:4000 \
+          {{ ecr_registry_url }}/{{ docker_image_cron }}
+      register: docker_run_cron
+
