@@ -18,5 +18,5 @@ String dockerimagename="829173323501.dkr.ecr.ap-south-1.amazonaws.com/gooplus:la
         docker push ${dockerimagename}
     """
 
-    sh "docker system prune -a "
+    
 }
