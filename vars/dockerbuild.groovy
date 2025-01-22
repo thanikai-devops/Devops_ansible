@@ -11,7 +11,7 @@ def buildimage(String imageName,String imageTag,String dockerfilepath,
     // Step 2: Build Docker image
     echo "Pulling Docker image ${imageName}:${imageTag}..."
     sh """
-        docker build --no-cache -t  ${imageName}:${imageTag} -f ${dockerfilepath} .
+        docker build  ${imageName}:${imageTag} -f ${dockerfilepath} .
     """ 
     // Creating Aws Ecr repo using ansible files
     // echo "Creating Aws ecr repo for ${aws_repoName}"
