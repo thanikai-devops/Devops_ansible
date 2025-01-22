@@ -3,7 +3,6 @@
 - name: Deploy Docker containers into application server
   hosts: app
   remote_user: ubuntu
-  gather_facts: yes
   vars_files:
     - deploy_vars.yml
   tasks:
