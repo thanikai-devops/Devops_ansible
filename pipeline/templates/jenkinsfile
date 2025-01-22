@@ -54,6 +54,15 @@ pipeline{
                     deploy.deploydocker()
                 }
             }
+        }            
+    }
+    post{
+        always{
+            node("node-1"){
+                script{
+                    cleanup.cleanup()
+                }
+            }
         }
     }
 }

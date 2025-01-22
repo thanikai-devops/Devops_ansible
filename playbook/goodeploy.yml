@@ -4,38 +4,33 @@
   hosts: app
   remote_user: ubuntu
   gather_facts: yes
-  vars: 
-    aws_region: ap-south-1
-    ecr_registry_url: 829173323501.dkr.ecr.ap-south-1.amazonaws.com
-    docker_image_api: apigoo
-    docker_image_cron: crongoo
-    container_name_api: api
-    container_name_cron: cron
+  vars_files:
+    - deploy_vars.yml
   tasks:
     - name: Login into ECR
       shell: |
-        aws ecr get-login-password --region {{ aws_region }} | docker login --username AWS --password-stdin {{ ecr_registry_url }}
+        aws ecr get-login-password --region {{ aws_region }} | docker login --username AWS --password-stdin {{ goo_ecr_registry_url }}
       register: ecr_login
 
     - name: Pull Docker Images for API
       shell: |
-        docker pull {{ ecr_registry_url }}/{{ docker_image_api }}
+        docker pull {{ goo_ecr_registry_url }}/{{ docker_image_api }}
       
     - name: Pull Docker Images for cron
       shell: |
-        docker pull {{ecr_registry_url}}/{{ docker_image_cron }}
+        docker pull {{goo_ecr_registry_url}}/{{ docker_image_cron }}
       
 
     - name: Container API Run from docker Images
       shell: |
         docker run -d \
           --name {{ container_name_api }} -p 3000:3000 \
-          {{ ecr_registry_url }}/{{ docker_image_api }}
+          {{ goo_ecr_registry_url }}/{{ docker_image_api }}
       
     - name: Container Cron Run from docker Images
       shell: |
         docker run -d \
           --name {{ container_name_cron }} -p 4000:4000 \
-          {{ ecr_registry_url }}/{{ docker_image_cron }}
+          {{ goo_ecr_registry_url }}/{{ docker_image_cron }}
       
 
