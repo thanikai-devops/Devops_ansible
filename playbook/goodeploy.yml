@@ -2,6 +2,7 @@
 
 - name: Deploy Docker containers into application server
   hosts: app
+  remote_user: ubuntu
   gather_facts: yes
   vars: 
     aws_region: ap-south-1
