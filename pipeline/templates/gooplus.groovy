@@ -41,6 +41,7 @@ pipeline{
             }
         }
         stage("Ansible CheckOut"){
+            agent{label "AnsibleDeployment"}
             steps{
                 script{
                     checkoutCode.ansiblecheckout()
@@ -48,6 +49,7 @@ pipeline{
             }
         }
         stage("Deployment in Application server"){
+            agent{label "AnsibleDeployment"}
             steps{
                 script{
                     deploy.deploydocker()
