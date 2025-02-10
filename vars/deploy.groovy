@@ -1,6 +1,7 @@
 def deploydocker(){
     // Application deploy into server using ansible
-     dir("/opt/workspace/GooplusBuildDeploy/playbook"){
-        sh "ansible-playbook -i inventory.ini goodeploy.yml"
-     }
+     sh """source ansible/bin/activate
+     cd /opt/workspace/GooplusBuildDeploy/playbook
+     ansible-playbook goodeploy.yml
+     """
 }
