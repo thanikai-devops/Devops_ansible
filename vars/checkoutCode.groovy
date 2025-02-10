@@ -1,6 +1,6 @@
 def gitcheckout(String repourl,String branch,String credentialsId="BitbucketRepo") {
     // Dynamic Checkout Branch 
-    echo "Checking out from repo: ${repourl}, branch: ${branch} with credentials: ${credentialsId}"
+    echo "Checking out from repo: ${repourl}, branch: ${branch} with credentials: ******Repo"
     checkout([
         $class: "GitSCM",
         branches: [[name: "*/${branch}"]],
