@@ -2,7 +2,7 @@ Library ("my_shared_library") _
 
 pipeline {
     agent {
-        label ""
+        label "node-1"
     }
     environment {
         giturl = "https://SciflareIT@bitbucket.org/fantasysportpro/fantasypro_sportsdata.git"
