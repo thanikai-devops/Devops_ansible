@@ -13,7 +13,7 @@ pipeline {
                 script{
                     echo "******************* Sportsdata *******************"
                     echo "Giturl : ${giturl}"
-                    echo "GitBranch" : ${gitbranch}
+                    echo "GitBranch : ${gitbranch}"
                     checkoutCode.gitcheckout(giturl,gitbranch)
                 }
             }
