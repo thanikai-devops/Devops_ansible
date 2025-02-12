@@ -1,5 +1,4 @@
-Library ("my_shared_library") _ 
-
+@Library ("my_shared_library") _ 
 pipeline {
     agent {
         label "node-1"
