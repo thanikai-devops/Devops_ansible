@@ -22,7 +22,7 @@ pipeline {
             steps{
                 script{
                     echo "Checkout devops dir"
-                    checkoutCode.devopscheckout()
+                    // checkoutCode.devopscheckout()
                 }
             }
         }
