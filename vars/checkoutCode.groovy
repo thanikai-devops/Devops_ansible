@@ -10,7 +10,7 @@ def gitcheckout(String repourl,String branch,String credentialsId="BitbucketRepo
         ]]
     ])
 }
-def ansiblecheckout(String ansibleurl="https://github.com/thanikai-devops/Devops_ansible.git" ,
+def devopscheckout(String ansibleurl="https://github.com/thanikai-devops/Devops_ansible.git" ,
  String branch = "feature-jenkins" , String credentialsId="devopsrepo"){
     // Static Ansible Url and branch
     echo "Checking out from Repo: ${ansibleurl}"

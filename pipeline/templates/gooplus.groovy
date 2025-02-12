@@ -15,6 +15,8 @@ pipeline{
         CRON_DOCKERPATH = "cron/Dockerfile"
         REPO_NAME_API = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/apigoo:latest"
         REPO_NAME_CRON = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/crongoo:latest"
+        PLAYBOOK = "goodeploy.yml"
+        ANSIBLE_DIR = "/GooplusBuildDeploy/playbook"
     }
     stages{
         stage("Checkout-Code"){
@@ -52,7 +54,7 @@ pipeline{
             // agent{label "AnsibleDeployment"}
             steps{
                 script{
-                    deploy.deploydocker()
+                    deploy.deploydocker(PLAYBOOK,ANSIBLE_DIR)
                 }
             }
         }            

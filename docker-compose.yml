@@ -1,0 +1,53 @@
+version: "3.8"
+# Docker Compose Version Mention Here Each Services Each container in this script 
+services: 
+# Main Services Of Docker compose api and cron for cricket sportsdata
+  api: 
+    build:
+      context: ./api
+    image: cricket-api
+    container_name: cricket-apicontainer
+    ports: 
+      - 8080:8080
+    restart: unless-stopped
+  cron:
+    build:
+      context: ./cron
+    image: cricket-cron
+    container_name: cricket-croncontainer
+    ports:
+      - 8081:8081
+    restart: unless-stopped
+  football_api:
+    build:
+      context: ./football_api
+    image: api-football
+    container_name: football_apicontainer
+    ports:
+      - 5000:5000
+    restart: unless-stopped
+  football_cron:
+    build:
+      context: ./football_cron
+    image: cron-football
+    container_name: football_croncontainer
+    ports:
+      - 5001:5001
+    restart: unless-stopped
+  kabaddi_api:
+    build:
+      context: ./kabaddi_api
+    image: kabaddi_api
+    container_name: kabaddi_apicontainer
+    ports:
+      - 3010:3010
+    restart: unless-stopped
+  kabaddi_cron:
+    build:
+      context: ./kabaddi_cron
+    image: kabaddi_cron
+    container_name: kabaddi_croncontainer
+    ports:
+      - 6001:6001
+    restart: unless-stopped
+
