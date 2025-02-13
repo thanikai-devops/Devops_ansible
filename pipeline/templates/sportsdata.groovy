@@ -14,7 +14,7 @@ pipeline {
                     echo "******************* Sportsdata *******************"
                     echo "Giturl : ${giturl}"
                     echo "GitBranch : ${gitbranch}"
-                    dir("sportsdata"){
+                    dir("sportsdata-microservices"){
                         checkoutCode.gitcheckout(giturl,gitbranch)
                     }
                 }
@@ -24,7 +24,7 @@ pipeline {
             steps{
                 script{
                     echo "Checkout devops dir"
-                    dir("Devops Configuration"){
+                    dir("devops-devfiles"){
                         checkoutCode.devopscheckout()
                     }
                 }
