@@ -5,7 +5,7 @@ services:
   api: 
     build:
       context: sportsdata-microservices/api
-      dockerfile: Dockerfile
+      dockerfile: dockerfile.api
     image: cricket-api
     container_name: cricket-apicontainer
     ports: 
@@ -13,7 +13,8 @@ services:
     restart: unless-stopped
   cron:
     build:
-      context: ./cron
+      context: sportsdata-microservices/cron
+      dockerfile: dockerfile.cron
     image: cricket-cron
     container_name: cricket-croncontainer
     ports:
@@ -21,7 +22,8 @@ services:
     restart: unless-stopped
   football_api:
     build:
-      context: ./football_api
+      context: sportsdata-microservices/football_api
+      dockerfile: dockerfile.footapi
     image: api-football
     container_name: football_apicontainer
     ports:
@@ -29,7 +31,8 @@ services:
     restart: unless-stopped
   football_cron:
     build:
-      context: ./football_cron
+      context: sportsdata-microservices/football_cron
+      dockerfile: dockerfile.footcron
     image: cron-football
     container_name: football_croncontainer
     ports:
@@ -37,7 +40,8 @@ services:
     restart: unless-stopped
   kabaddi_api:
     build:
-      context: ./kabaddi_api
+      context: sportsdata-microservices/kabaddi_api
+      dockerfile: dockerfile.kabaddiapi
     image: kabaddi_api
     container_name: kabaddi_apicontainer
     ports:
@@ -45,7 +49,8 @@ services:
     restart: unless-stopped
   kabaddi_cron:
     build:
-      context: ./kabaddi_cron
+      context: sportsdata-microservices/kabaddi_cron
+      dockerfile: dockerfile.kabaddicron
     image: kabaddi_cron
     container_name: kabaddi_croncontainer
     ports:
