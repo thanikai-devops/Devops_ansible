@@ -4,7 +4,8 @@ services:
 # Main Services Of Docker compose api and cron for cricket sportsdata
   api: 
     build:
-      context: ./api
+      context: sportsdata/api
+      dockerfile: Dockerfile
     image: cricket-api
     container_name: cricket-apicontainer
     ports: 
