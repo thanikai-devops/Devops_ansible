@@ -43,7 +43,7 @@ pipeline {
                 }
             }
         }
-        stage("Remove Old DockerImages"){
+        stage("Remove Old DockerImages And Containers"){
             steps{
                 script{
                     echo "*** Delete Old Images ***"
