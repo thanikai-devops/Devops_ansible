@@ -36,7 +36,7 @@ pipeline {
                     def containerRuning = sh(script:"docker ps -q ",returnStdout: true).trim()
                     if (containerRuning) {
                         echo "Container Found .Stopping Container"
-                        sh "docker compose down -d"
+                        sh "docker compose down"
                     } else {
                         echo "No running Container found .Skipping Stages >> "
                     }
