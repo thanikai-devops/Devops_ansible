@@ -1,7 +1,7 @@
 @Library ("my_shared_library") _ 
 pipeline {
     agent {
-        label "node-1"
+        label "node-sportsdata"
     }
     environment {
         giturl = "https://SciflareIT@bitbucket.org/fantasysportpro/fantasypro_sportsdata.git"
@@ -28,10 +28,28 @@ pipeline {
                 }
             }
         }
-        stage("Build DockerCompose"){
+        stage("Stoping Old Dockercontainers"){
             steps{
                 script{
-                    echo "Docker compose Logic **************"
+                    echo "*** Docker compose containers ***" 
+                    sh "docker compose down -d"
+                }
+            }
+        }
+        stage("Remove Old DockerImages"){
+            steps{
+                script{
+                    echo "*** Delete Old Images ***"
+                    sh "docker system prune -a -f"
+                }
+            }
+        }
+        stage("Docker Compose Up"){
+            steps{
+                script{
+                    echo "*** Running Docker compose Up ***"
+                    sh "docker compose up -d"
+                    sh "docker images && docker ps"
                 }
             }
         }
