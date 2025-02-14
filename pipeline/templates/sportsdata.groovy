@@ -33,7 +33,13 @@ pipeline {
             steps{
                 script{
                     echo "*** Docker compose containers ***" 
-                    sh "docker compose down -d"
+                    def containerRuning = sh(script:"docker ps -q ",returnStdout: true).trim()
+                    if (containerRuning) {
+                        echo "Container Found .Stopping Container"
+                        sh "docker compose down -d"
+                    } else {
+                        echo "No running Container found .Skipping Stages >> "
+                    }
                 }
             }
         }
