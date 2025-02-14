@@ -1,7 +1,8 @@
 @Library ("my_shared_library") _ 
 pipeline {
     agent {
-        label "node-sportsdata"
+        // label "node-sportsdata"
+        label "node-1"
     }
     environment {
         giturl = "https://SciflareIT@bitbucket.org/fantasysportpro/fantasypro_sportsdata.git"
@@ -48,7 +49,7 @@ pipeline {
             steps{
                 script{
                     echo "*** Running Docker compose Up ***"
-                    sh "docker compose up -d"
+                    sh "docker compose up -d api cron"
                     sh "docker images && docker ps"
                 }
             }
