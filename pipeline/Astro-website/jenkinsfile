@@ -1,0 +1,56 @@
+@Library ("my_shared_library") _
+pipeline {
+    agent {
+        label "JenkinsWorker"
+    }
+    environment {
+        ECR_REPOS = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/sciflare-website"  // Your ECR repository URL
+    }
+    stages {
+        stage("Scm") {
+            steps {
+                script {
+                    // Ensure that the credentialsId is properly substituted
+                    checkout scmGit(
+                        branches: [[name: '*/dev_dafin']],  // The branch you want to checkout
+                        extensions: [],  //  you can specify other Git options here if needed
+                        userRemoteConfigs: [
+                            [
+                                credentialsId: "BitbucketRepo",  // Use a credentials ID stored in Jenkins
+                                url: 'https://SciflareIT@bitbucket.org/web-sciflare/sciflare-website.git'  // The Bitbucket repository URL
+                            ]
+                        ]
+                    )
+                }
+            }
+        }
+        stage("Login into AWS ECR Repos") {
+            steps {
+                script {
+                    // Login to AWS ECR using the AWS CLI
+                    sh """
+                        aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin ${ECR_REPOS}
+                    """
+                }
+            }
+        }
+        stage("Build Docker Image & Push to AWS ECR"){
+            steps{
+                script{
+                    // Build Docker Image
+                    sh "docker build -t ${ECR_REPOS}:${BUILD_NUMBER} ."
+                    // Push Docker Image into Aws ECR
+                    echo "Docker Push into AWS ECR"
+                    sh "docker push ${ECR_REPOS}:${BUILD_NUMBER}"
+                }
+            }
+        }
+        stage("Ansible Deployment"){
+            steps{
+                script{
+                    
+                }
+            }
+        }
+    }
+}
