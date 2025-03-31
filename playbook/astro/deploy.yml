@@ -6,9 +6,8 @@
   vars:
     AWS_REGION: 'ap-south-1'
     ECR_REPOS: 829173323501.dkr.ecr.ap-south-1.amazonaws.com/sciflare-website
-    # BUILD_NUMBER: '{{BUILD_NUMBER}}'
     CONTAINER_NAME: AstroWebapps
-    Image_tag: '23'
+    # Image_tag: '23'
   tasks:
     - name: Login into ECR repos
       shell: |
@@ -16,8 +15,8 @@
       failed_when: "'Login Succeeded'not in login_result.stdout"
     - name: Pull Docker Images For AstroWebapps Module
       shell: |
-        docker pull {{ECR_REPOS}}:{{Image_tag}}
+        docker pull {{ECR_REPOS}}
     - name: Run Docker Containers Astrowebapp Module
       shell: |
         docker run -d --name {{CONTAINER_NAME}} \
-          -p 8080:8080 {{ECR_REPOS}}:{{Image_tag}}
+          -p 8080:8080 {{ECR_REPOS}}

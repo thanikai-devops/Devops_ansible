@@ -2,7 +2,7 @@
 
 pipeline {
     agent {
-        label ""
+        label "node-1"
     }
     environment{
 
@@ -20,13 +20,7 @@ pipeline {
             steps{
                 script{
                     echo "*** Docker compose containers ***" 
-                    def containerRuning = sh(script:"docker ps -q ",returnStdout: true).trim()
-                    if (containerRuning) {
-                        echo "Container Found .Stopping Container"
-                        sh "docker compose down"
-                    } else {
-                        echo "No running Container found .Skipping Stages >> "
-                    }
+                    dockercleanup.dockercontainercompose()
                 }
             }
         }
@@ -41,7 +35,8 @@ pipeline {
         stage("Docker Compose Up"){
             steps{
                 script{
-                    dockercomposer()
+                    sh "docker compose up -d api cron"
+                    sh "docker images && docker ps"
                 }
             }
         }

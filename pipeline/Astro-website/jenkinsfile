@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         ECR_REPOS = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/sciflare-website"  // Your ECR repository URL
-        BUILD_NUMER = ${env.BUILD_NUMBER}
+        BUILD_NUMER = "${env.BUILD_NUMBER}"
         ANSIBLE_INVENTORY = "../playbook/astro"
     }
     stages {
