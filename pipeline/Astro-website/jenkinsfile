@@ -19,19 +19,19 @@ pipeline {
                 }
             }
         }
-        // stage("Build Docker Image & Push to AWS ECR"){
-        //     steps{
-        //         script{
-        //             ecrLoginBuildAndPush(AWS_REGION, ECR_REPOS, BUILD_NUMBER)
-        //         }
-        //     }
-        // }
-        // stage("Ansible Deployment"){
-        //     steps{
-        //         script{
-        //             ansibledeploymentIntoServer('../playbook/astro/hosts','../playbook/astro/deploy.yml')
-        //         }
-        //     }
-        // }
+        stage("Build Docker Image & Push to AWS ECR"){
+            steps{
+                script{
+                    ecrLoginBuildAndPush(AWS_REGION, ECR_REPOS, BUILD_NUMBER)
+                }
+            }
+        }
+        stage("Ansible Deployment"){
+            steps{
+                script{
+                    ansibledeploymentIntoServer('../playbook/astro/hosts','../playbook/astro/deploy.yml')
+                }
+            }
+        }
     }
 }
