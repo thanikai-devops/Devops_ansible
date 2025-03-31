@@ -1,5 +1,5 @@
 //  Checkout Groovy 
-def gitcheckout(String repourl, String branch, String credentialsId="BitbucketRepo") {
+def scmcheckout(String repourl, String branch, String credentialsId="BitbucketRepo") {
 
     echo "Checking out from repo: ${repourl}, branch: ${branch} with credentials: ${credentialsId}"
     checkout scmGit(

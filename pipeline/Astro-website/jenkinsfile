@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     // Ensure that the credentialsId is properly substituted
-                    scm.gitcheckout("https://SciflareIT@bitbucket.org/web-sciflare/sciflare-website.git", "dev_dafin")
+                    checkoutCode.scmcheckout("https://SciflareIT@bitbucket.org/web-sciflare/sciflare-website.git", "dev_dafin")
 
                 }
             }
