@@ -1,0 +1,49 @@
+@Library ('my_shared_library') _ 
+
+pipeline {
+    agent {
+        label ""
+    }
+    environment{
+
+    }
+    stages{
+        stage("checkout SCM"){
+            steps{
+                script{
+                    echo "******************* Sportsdata *******************"
+                    gitcheckout("https://SciflareIT@bitbucket.org/fantasysportpro/fantasypro_sportsdata.git","master")
+                }
+            }
+        }
+        stage("Stoping Old Dockercontainers"){
+            steps{
+                script{
+                    echo "*** Docker compose containers ***" 
+                    def containerRuning = sh(script:"docker ps -q ",returnStdout: true).trim()
+                    if (containerRuning) {
+                        echo "Container Found .Stopping Container"
+                        sh "docker compose down"
+                    } else {
+                        echo "No running Container found .Skipping Stages >> "
+                    }
+                }
+            }
+        }
+        stage("Remove Old DockerImages And Containers"){
+            steps{
+                script{
+                    echo "*** Delete Old Images ***"
+                    sh "docker system prune -a -f"
+                }
+            }
+        }
+        stage("Docker Compose Up"){
+            steps{
+                script{
+                    dockercomposer()
+                }
+            }
+        }
+    }
+}
