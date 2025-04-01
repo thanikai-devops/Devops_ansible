@@ -24,9 +24,9 @@ pipeline {
             steps{
                 script{
                     echo "Build Docker Images api-sd"
-                    build.ecrLoginBuildAndPush(AWS_REGION ,ECR_REPOS_API ,BUILD_NUMBER,dockerfile.api)
+                    build.ecrLoginBuildAndPush(AWS_REGION ,ECR_REPOS_API ,BUILD_NUMBER,api/dockerfile.api)
                     echo "Build Docker Image Cron-sd"
-                    build.ecrLoginBuildAndPush(AWS_REGION,ECR_REPOS_CRON, BUILD_NUMBER,dockerfile.cron)
+                    build.ecrLoginBuildAndPush(AWS_REGION,ECR_REPOS_CRON, BUILD_NUMBER,cron/dockerfile.cron)
                 }
             }
         }
