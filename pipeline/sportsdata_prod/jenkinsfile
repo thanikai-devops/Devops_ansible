@@ -23,10 +23,12 @@ pipeline {
         stage("Build Docker Images API"){
             steps{
                 script{
-                    sh "pwd"
-                    echo "Build Docker Images api-sd"
-                    echo "ECR REPO ${ECR_REPOS_API}"
-                    build.ecrLoginBuildAndPush(AWS_REGION ,ECR_REPOS_API ,BUILD_NUMBER)  
+                    dir("api"){
+                        sh "pwd"
+                        echo "Build Docker Images api-sd"
+                        echo "ECR REPO ${ECR_REPOS_API}"
+                        build.ecrLoginBuildAndPush(AWS_REGION ,ECR_REPOS_API ,BUILD_NUMBER)
+                    }       
                 }
             }
         }
