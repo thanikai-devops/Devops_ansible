@@ -1,4 +1,4 @@
-def ecrLoginBuildAndPush(String awsRegion="ap-south-1", String ecrRepos, String buildNumber,String dockerfilepath) {
+def ecrLoginBuildAndPush(String awsRegion="ap-south-1", String ecrRepos="829173323501.dkr.ecr.ap-south-1.amazonaws.com/cron-sd", String buildNumber,String dockerfilepath) {
     echo "Logging into AWS ECR Repository: ${ecrRepos} in region: ${awsRegion}"
     
     // Step 1: Login to AWS ECR using AWS CLI
