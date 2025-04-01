@@ -20,25 +20,13 @@ pipeline {
                 }
             }
         }
-        // stage("Build Docker Images API"){
-        //     steps{
-        //         script{
-        //             dir("api"){
-        //                 sh "pwd"
-        //                 echo "Build Docker Images api-sd"
-        //                 build.ecrLoginBuildAndPush(AWS_REGION ,ECR_REPOS_API ,BUILD_NUMBER)
-        //             }    
-                    
-        //         }
-        //     }
-        // }
-        stage("Build Docker Images Cron"){
+        stage("Build Docker Images API"){
             steps{
                 script{
-                    dir("cron"){
-                        echo "Build Docker Image Cron-sd"
-                        build.ecrLoginBuildAndPush(AWS_REGION,ECR_REPOS_CRON, BUILD_NUMBER)
-                    }
+                    sh "pwd"
+                    echo "Build Docker Images api-sd"
+                    echo "ECR REPO ${ECR_REPOS_API}"
+                    build.ecrLoginBuildAndPush(AWS_REGION ,ECR_REPOS_API ,BUILD_NUMBER)  
                 }
             }
         }
