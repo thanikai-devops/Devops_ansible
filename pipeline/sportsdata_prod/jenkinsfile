@@ -25,6 +25,7 @@ pipeline {
                 script{
                     def dockerpathapi = "api/dockerfile.api"
                     def dockerpathcron = "cron/dockerfile.cron"
+                    sh "pwd"
                     echo "Build Docker Images api-sd"
                     build.ecrLoginBuildAndPush(AWS_REGION ,ECR_REPOS_API ,BUILD_NUMBER,dockerpathapi)
                     echo "Build Docker Image Cron-sd"
