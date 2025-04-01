@@ -2,7 +2,7 @@
 
 pipeline {
     agent {
-        label "node-1"
+        label "JenkinsWorker"
     }
     environment{
         AWS_REGION = "ap-south-1"
