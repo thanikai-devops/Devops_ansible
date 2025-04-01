@@ -23,10 +23,12 @@ pipeline {
         stage("Build Docker Images"){
             steps{
                 script{
+                    def dockerpathapi = "api/dockerfile.api"
+                    def dockerpathcron = "cron/dockerfile.cron"
                     echo "Build Docker Images api-sd"
-                    build.ecrLoginBuildAndPush(AWS_REGION ,ECR_REPOS_API ,BUILD_NUMBER,api/dockerfile.api)
+                    build.ecrLoginBuildAndPush(AWS_REGION ,ECR_REPOS_API ,BUILD_NUMBER,dockerpathapi)
                     echo "Build Docker Image Cron-sd"
-                    build.ecrLoginBuildAndPush(AWS_REGION,ECR_REPOS_CRON, BUILD_NUMBER,cron/dockerfile.cron)
+                    build.ecrLoginBuildAndPush(AWS_REGION,ECR_REPOS_CRON, BUILD_NUMBER,dockerpathcron)
                 }
             }
         }
