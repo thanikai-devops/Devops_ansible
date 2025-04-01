@@ -1,0 +1,16 @@
+---
+
+- name: Deploy Application into Application Server Sportsdata Prod
+  hosts: sportsdata_prod
+  remote_user: ubuntu
+  vars:
+    AWS_REGION: "ap-south-1"
+    ECR_REPOS_API: 829173323501.dkr.ecr.ap-south-1.amazonaws.com/api-sd
+    API_CONTAINER: apicontainer
+  tasks:
+    - name: Login into ECR repos API
+      shell: |
+        aws ecr get-login-password --region {{AWS_REGION}} | docker login --username AWS --password-stdin {{ECR_REPOS_API}} 
+    - name: Pull Docker Image For API && CRON Images
+      shell: |
+        docker pull {{ECR_REPOS_API}} 

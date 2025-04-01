@@ -1,3 +1,8 @@
+def ContainerAndImagesPrune(){
+    echo "Cleanup the COntainer in JenkinsWorker"
+    sh "docker system prune -f -a"
+}
+
 def dockercontainercompose(){
     echo "DOcker Container Clean up "
     def containerRunning = sh(script "docker ps -q",returnStdout: true).trim()

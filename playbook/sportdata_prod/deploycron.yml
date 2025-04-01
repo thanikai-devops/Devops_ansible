@@ -1,0 +1,15 @@
+---
+
+- name: Deploy Applicaion into application server Using ansible
+  hosts: sportsdata_prod
+  remote_user: ubuntu
+  vars:
+    ECR_REPOS_CRON: 829173323501.dkr.ecr.ap-south-1.amazonaws.com/cron-sd
+    AWS_REGION: ap-south-1
+  tasks:
+    - name: Login into Aws ECR repos
+      shell: |
+        aws ecr get-login-password --region {{AWS_REGION}} | docker login --username AWS --password-stdin {{ECR_REPOS_CRON}}
+    - name: Pull Docker Image of cron 
+      shell: |
+        docker pull {{ECR_REPOS_CRON}}

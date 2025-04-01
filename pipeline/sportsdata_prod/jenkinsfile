@@ -9,7 +9,8 @@ pipeline {
         ECR_REPOS_API = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/api-sd"
         ECR_REPOS_CRON = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/cron-sd"
         BUILD_NUMER = "${env.BUILD_NUMBER}"
-        
+        PLAYBOOK_API = "../playbook/sportdata_prod/deployapi.yml"
+        PLAYBOOK_CRON = "../playbook/sportdata_prod/deploycron.yml"
     }
     stages{
         stage("checkout SCM"){
@@ -37,13 +38,14 @@ pipeline {
                 }
             }
         }
-        // stage("Remove Old DockerImages And Containers"){
-        //     steps{
-        //         script{
-        //             echo "*** Delete Old Images ***"
-        //             sh "docker system prune -a -f"
-        //         }
-        //     }
-        // }
+        stage("Ansible - Deploy Into Application Server"){
+            steps{
+                script{
+                    echo "Deploy Container into Application Server"
+                    deploy.ansibledeploymentIntoServer(PLAYBOOK_API)
+                    // deploy.ansibledeploymentIntoServer(PLAYBOOK_CRON)
+                }
+            }
+        }
     }
 }

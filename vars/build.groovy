@@ -1,3 +1,4 @@
+// Login and Pushing BUilding Docker Images
 def ecrLoginBuildAndPush(String awsRegion="ap-south-1", String ecrRepo, String buildNumber) {
     echo "Logging into AWS ECR Repository: ${ecrRepo} in region: ${awsRegion}"
     
@@ -5,10 +6,8 @@ def ecrLoginBuildAndPush(String awsRegion="ap-south-1", String ecrRepo, String b
     sh """
         aws ecr get-login-password --region ${awsRegion} | docker login --username AWS --password-stdin ${ecrRepo}
     """
-    
-    echo "Docker Clean up"
-    sh "docker system prune -f -a"
-
+    // echo "Docker Clean up"
+    // sh "docker system prune -f -a"
     // Step 2: Build Docker Image
     echo "Building Docker image: ${ecrRepo}:${buildNumber}"
     sh "docker build -t ${ecrRepo}:${buildNumber} ."
