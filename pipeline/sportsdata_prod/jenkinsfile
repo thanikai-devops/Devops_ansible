@@ -41,6 +41,7 @@ pipeline {
         stage("Ansible - Deploy Into Application Server"){
             steps{
                 script{
+                    sh "pwd"
                     echo "Deploy Container into Application Server"
                     deploy.ansibledeploymentIntoServer(PLAYBOOK_API)
                     // deploy.ansibledeploymentIntoServer(PLAYBOOK_CRON)
