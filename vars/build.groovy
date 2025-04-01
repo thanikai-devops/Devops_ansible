@@ -1,4 +1,4 @@
-def ecrLoginBuildAndPush(String awsRegion="ap-south-1", String ecrRepos, String buildNumber) {
+def ecrLoginBuildAndPush(String awsRegion="ap-south-1", String ecrRepos, String buildNumber,String dockerfilepath) {
     echo "Logging into AWS ECR Repository: ${ecrRepos} in region: ${awsRegion}"
     
     // Step 1: Login to AWS ECR using AWS CLI
@@ -11,7 +11,7 @@ def ecrLoginBuildAndPush(String awsRegion="ap-south-1", String ecrRepos, String 
 
     // Step 2: Build Docker Image
     echo "Building Docker image: ${ecrRepos}:${buildNumber}"
-    sh "docker build -t ${ecrRepos}:${buildNumber} ."
+    sh "docker build -f ${dockerfilepath} -t ${ecrRepos}:${buildNumber} ."
 
     // Step 3: Push Docker Image to AWS ECR
     echo "Pushing Docker image to AWS ECR: ${ecrRepos}:${buildNumber}"
