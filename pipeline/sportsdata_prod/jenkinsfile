@@ -20,16 +20,23 @@ pipeline {
                 }
             }
         }
-        stage("Build Docker Images"){
+        stage("Build Docker Images API"){
             steps{
                 script{
-                    def dockerpathapi = "api/dockerfile.api"
-                    def dockerpathcron = "cron/dockerfile.cron"
                     sh "pwd"
                     echo "Build Docker Images api-sd"
-                    build.ecrLoginBuildAndPush(AWS_REGION ,ECR_REPOS_API ,BUILD_NUMBER,dockerpathapi)
-                    echo "Build Docker Image Cron-sd"
-                    build.ecrLoginBuildAndPush(AWS_REGION,ECR_REPOS_CRON, BUILD_NUMBER,dockerpathcron)
+                    build.ecrLoginBuildAndPush(AWS_REGION ,ECR_REPOS_API ,BUILD_NUMBER)
+                    
+                }
+            }
+        }
+        stage("Build Docker Images Cron"){
+            steps{
+                script{
+                    dir("cron"){
+                        echo "Build Docker Image Cron-sd"
+                        build.ecrLoginBuildAndPush(AWS_REGION,ECR_REPOS_CRON, BUILD_NUMBER)
+                    }
                 }
             }
         }
