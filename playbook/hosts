@@ -2,3 +2,6 @@
 
 3.108.0.250 ansible_connection=ssh ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/astrowebapps
 
+[sportsdata_prod]
+
+43.204.155.150 ansible_connection=ssh ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/

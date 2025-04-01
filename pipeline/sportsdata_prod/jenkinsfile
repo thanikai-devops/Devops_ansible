@@ -5,7 +5,10 @@ pipeline {
         label "node-1"
     }
     environment{
-
+        AWS_REGION = "ap-south-1"
+        ECR_REPOS_API = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/api-sd"
+        ECR_REPOS_CRON = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/cron-sd"
+        BUILD_NUMER = "${env.BUILD_NUMBER}"
     }
     stages{
         stage("checkout SCM"){
@@ -16,29 +19,23 @@ pipeline {
                 }
             }
         }
-        stage("Stoping Old Dockercontainers"){
+        stage("Build Docker Images"){
             steps{
                 script{
-                    echo "*** Docker compose containers ***" 
-                    dockercleanup.dockercontainercompose()
+                    echo "Build Docker Images api-sd"
+                    build.ecrLoginBuildAndPush(AWS_REGION ,ECR_REPOS_API ,BUILD_NUMBER )
+                    echo "Build Docker Image Cron-sd"
+                    build.ecrLoginBuildAndPush(AWS_REGION,ECR_REPOS_CRON, BUILD_NUMBER)
                 }
             }
         }
-        stage("Remove Old DockerImages And Containers"){
-            steps{
-                script{
-                    echo "*** Delete Old Images ***"
-                    sh "docker system prune -a -f"
-                }
-            }
-        }
-        stage("Docker Compose Up"){
-            steps{
-                script{
-                    sh "docker compose up -d api cron"
-                    sh "docker images && docker ps"
-                }
-            }
-        }
+        // stage("Remove Old DockerImages And Containers"){
+        //     steps{
+        //         script{
+        //             echo "*** Delete Old Images ***"
+        //             sh "docker system prune -a -f"
+        //         }
+        //     }
+        // }
     }
 }
