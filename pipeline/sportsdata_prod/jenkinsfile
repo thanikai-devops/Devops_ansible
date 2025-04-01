@@ -9,8 +9,8 @@ pipeline {
         ECR_REPOS_API = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/api-sd"
         ECR_REPOS_CRON = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/cron-sd"
         BUILD_NUMER = "${env.BUILD_NUMBER}"
-        PLAYBOOK_API = "../playbook/sportdata_prod/deployapi.yml"
-        PLAYBOOK_CRON = "../playbook/sportsdata_prod/deployapi.yml"
+        PLAYBOOK_API = "../playbook/sportsdata_prod/deployapi.yml"
+        PLAYBOOK_CRON = "../playbook/sportsdata_prod/deploycron.yml"
     }
     stages{
         stage("checkout SCM"){
