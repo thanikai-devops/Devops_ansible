@@ -14,3 +14,6 @@
     - name: Pull Docker Image For API && CRON Images
       shell: |
         docker pull {{ECR_REPOS_API}} 
+    - name: Run Docker API COntainer 
+      shell: |
+        docker run -d --name {{apicontainer}} -p 8081:8081 {{ECR_REPOS_API}}

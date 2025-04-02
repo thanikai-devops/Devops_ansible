@@ -8,7 +8,7 @@ pipeline {
         AWS_REGION = "ap-south-1"
         ECR_REPOS_API = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/api-sd"
         ECR_REPOS_CRON = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/cron-sd"
-        BUILD_NUMER = "${env.BUILD_NUMBER}"
+        BUILD_NUMER = "latest"
         PLAYBOOK_API = "../playbook/sportsdata_prod/deployapi.yml"
         PLAYBOOK_CRON = "../playbook/sportsdata_prod/deploycron.yml"
     }
@@ -44,7 +44,7 @@ pipeline {
                     sh "pwd"
                     echo "Deploy Container into Application Server"
                     deploy.ansibledeploymentIntoServer(PLAYBOOK_API)
-                    // deploy.ansibledeploymentIntoServer(PLAYBOOK_CRON)
+                    deploy.ansibledeploymentIntoServer(PLAYBOOK_CRON)
                 }
             }
         }

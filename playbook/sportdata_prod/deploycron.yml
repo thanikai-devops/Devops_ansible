@@ -6,6 +6,7 @@
   vars:
     ECR_REPOS_CRON: 829173323501.dkr.ecr.ap-south-1.amazonaws.com/cron-sd
     AWS_REGION: ap-south-1
+    CONTAINER_NAME: cron
   tasks:
     - name: Login into Aws ECR repos
       shell: |
@@ -13,3 +14,6 @@
     - name: Pull Docker Image of cron 
       shell: |
         docker pull {{ECR_REPOS_CRON}}
+    - name: Run Docker Container Cron Module
+      shell: |
+        docker run -d --name {{CONTAINER_NAME}} -p 8080:8080 {{ECR_REPOS_CRON}}
