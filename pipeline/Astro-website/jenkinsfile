@@ -7,9 +7,9 @@ pipeline {
     environment {
         ECR_REPOS = "829173323501.dkr.ecr.ap-south-1.amazonaws.com/sciflare-website"  // Your ECR repository URL
         BUILD_NUMER = "${env.BUILD_NUMBER}"
-        ANSIBLE_INVENTORY = "../playbook/astro"
         AWS_REGION = 'ap-south-1'
-        DOCKERPATH = "Dockerfile"
+        // DOCKERPATH = "Dockerfile"
+        PLAYBOOK = "../playbook/astro/deploy.yml"
     }
     stages {
         stage("Scm") {
@@ -28,12 +28,12 @@ pipeline {
                 }
             }
         }
-        // stage("Ansible Deployment"){
-        //     steps{
-        //         script{
-        //             ansibledeploymentIntoServer('../playbook/astro/hosts','../playbook/astro/deploy.yml')
-        //         }
-        //     }
-        // }
+        stage("Ansible Deployment"){
+            steps{
+                script{
+                    deploy.ansibledeploymentIntoServer(PLAYBOOK)
+                }
+            }
+        }
     }
 }

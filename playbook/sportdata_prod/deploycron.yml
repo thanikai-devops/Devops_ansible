@@ -17,3 +17,4 @@
     - name: Run Docker Container Cron Module
       shell: |
         docker run -d --name {{CONTAINER_NAME}} -p 8080:8080 {{ECR_REPOS_CRON}}
+        

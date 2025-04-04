@@ -16,6 +16,10 @@
     - name: Pull Docker Images For AstroWebapps Module
       shell: |
         docker pull {{ECR_REPOS}}
+    - name: Update Existing Container with Old Once
+      shell: |
+        docker stop {{CONTAINER_NAME}}
+      failed_when: false
     - name: Run Docker Containers Astrowebapp Module
       shell: |
         docker run -d --name {{CONTAINER_NAME}} \
