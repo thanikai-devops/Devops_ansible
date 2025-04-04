@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: apicontainer
+    environment:
+      - PORT=8080
+      - DBURI=mongodb+srv://sports_user:7As3dIzQgKODqTfH@ad11.ldnym.mongodb.net/
+      - DBNAME=cricket_sportsdata
+      - JWT_SECRET_KEY=sportsData
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports: 
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/mongodata
+volumes:
+    mongo-data:

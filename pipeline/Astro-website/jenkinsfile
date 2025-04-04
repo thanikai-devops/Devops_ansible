@@ -24,7 +24,7 @@ pipeline {
         stage("Build Docker Image & Push to AWS ECR"){
             steps{
                 script{ 
-                    build.ecrLoginBuildAndPush(AWS_REGION, ECR_REPOS, BUILD_NUMBER)
+                    build.ecrLoginBuildAndPush(AWS_REGION, ECR_REPOS)
                 }
             }
         }
